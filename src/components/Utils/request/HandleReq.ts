@@ -1,8 +1,10 @@
-import { $headers } from "@/components/Utils/reqHeader";
+import {$headers} from "@/components/Utils/reqHeader";
 import axios from "axios";
-import { deleteCookie, setCookie } from "cookies-next";
-import { useRouter } from "next/navigation";
-import { API_URL } from "../constant";
+import {deleteCookie, setCookie} from "cookies-next";
+import {useRouter} from "next/navigation";
+import {API_URL} from "../constant";
+import {keyAuthentication} from "@/Constant/EnumData";
+
 export class HandleReq {
   private router = useRouter();
 
@@ -31,8 +33,9 @@ export class HandleReq {
           } = response.data;
 
           if (!isExpired && token) {
-            setCookie("logged", true, { maxAge: 18 * 3600 }); // 18 h
-            setCookie("token", token, { maxAge: 18 * 3600 }); // 18 h
+            setCookie(keyAuthentication.logged, true, { maxAge: 18 * 3600 }); // 18 h
+            setCookie(keyAuthentication.token, token, { maxAge: 18 * 3600 }); // 18 h
+              setCookie(keyAuthentication.role, token, { maxAge: 18 * 3600 });
             // localStorage.setItem("username", familyName + " " + givenName);
           }
 

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const User = () => {
+const MyComponent = () => {
     return (
         <div>
-            User Page
+            MyComponent
         </div>
     );
 };
 
-export default User;
+export default MyComponent;
