@@ -1,14 +1,14 @@
 "use client";
-import { Stack } from "@mui/material";
-import { useRouter } from "next/navigation";
-import { useLayoutEffect } from "react";
+import {Stack} from "@mui/material";
+import React from "react";
+import ProtectRoute from "@/app/auth/ProtectRoute";
 
 const HomePage = () => {
-  const navigation = useRouter();
+
   return (
-    <Stack alignItems={"center"} justifyContent={"center"} height={"100vh"}>
-      Loading ...
-    </Stack>
+    <ProtectRoute>
+
+    </ProtectRoute>
   );
 };
 

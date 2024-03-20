@@ -1,10 +1,14 @@
+"use client"
 import React from 'react';
+import ProtectRoute from "@/app/auth/ProtectRoute";
 
 const Admin = () => {
     return (
-        <div>
-            Admin Page
-        </div>
+        <ProtectRoute>
+            <div>
+                Admin Page
+            </div>
+        </ProtectRoute>
     );
 };
 

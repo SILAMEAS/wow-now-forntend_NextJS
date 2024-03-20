@@ -6,15 +6,15 @@ import {API_URL} from "../constant";
 import {keyAuthentication} from "@/Constant/EnumData";
 
 export class HandleReq {
-  private router = useRouter();
+  // private router = useRouter();
 
   // function
   login = async ({ email, password }: { email: string; password: string }) => {
     try {
       if (email !== "" && password !== "") {
         const response = await axios.post(
-          `${API_URL}api/v1/users/get-token`,
-          { username: email, password: password },
+          `${API_URL}auth/sign-in`,
+          { email: email, password: password },
           {
             headers: {
               "Content-Type": "application/json",
@@ -24,24 +24,14 @@ export class HandleReq {
               "Access-Control-Allow-Credentials": true,
             },
           }
-        );
-        if (response) {
-          const {
-            isExpired,
-            token,
-            user: { familyName, givenName },
-          } = response.data;
-
-          if (!isExpired && token) {
-            setCookie(keyAuthentication.logged, true, { maxAge: 18 * 3600 }); // 18 h
-            setCookie(keyAuthentication.token, token, { maxAge: 18 * 3600 }); // 18 h
-              setCookie(keyAuthentication.role, token, { maxAge: 18 * 3600 });
-            // localStorage.setItem("username", familyName + " " + givenName);
-          }
-
+        ).then((res)=>{
+          setCookie(keyAuthentication.logged, true, { maxAge: 18 * 3600 }); // 18 h
+          setCookie(keyAuthentication.token, res.data.jwt, { maxAge: 18 * 3600 }); // 18 h
+          setCookie(keyAuthentication.role, res.data.role, { maxAge: 18 * 3600 });
           window.location.reload();
-          return response;
-        }
+         // this.router.push("/")
+        });
+
       }
     } catch (e) {
       return e;
@@ -50,7 +40,8 @@ export class HandleReq {
   // logout
   logout = () => {
     deleteCookie("logged");
-    this.router.push("/login");
+    window.location.reload();
+    // this.router.push("/login");
   };
   getProduct = async ({
     pageNumber = 0,

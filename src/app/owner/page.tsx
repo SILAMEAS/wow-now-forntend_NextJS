@@ -1,15 +1,16 @@
+"use client"
 import React from 'react';
 import ProtectRoute from "@/app/auth/ProtectRoute";
 
-const User = () => {
+const Ownerpage = () => {
+
     return (
         <ProtectRoute>
             <div>
-            User Page
-        </div>
+                Ownerpage
+            </div>
         </ProtectRoute>
-
     );
 };
 
-export default User;
+export default Ownerpage;

@@ -8,6 +8,7 @@ export enum EnumData{
 export enum Url{
     admin="/admin",
     user="/user",
+    owner="owner",
     home="/",
     login="login"
 }
