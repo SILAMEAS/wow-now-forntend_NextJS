@@ -1,16 +1,16 @@
-"use client"
-import React from 'react';
-import ProtectRoute from "@/app/auth/ProtectRoute";
+"use client";
+
+import MSLogoutButton from "@/components/ms-button/MSLogoutButton";
 
 const Ownerpage = () => {
-
-    return (
-        <ProtectRoute>
-            <div>
-                Ownerpage
-            </div>
-        </ProtectRoute>
-    );
+  return (
+    <div className="container-full  h-[100vh]   flex-col justify-center items-center flex space-y-5">
+      <p>Ownerpage</p>
+      <div>
+        <MSLogoutButton />
+      </div>
+    </div>
+  );
 };
 
 export default Ownerpage;

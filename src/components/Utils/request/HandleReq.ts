@@ -1,9 +1,8 @@
-import {$headers} from "@/components/Utils/reqHeader";
+import { $headers } from "@/components/Utils/reqHeader";
+import { keyAuthentication } from "@/Constant/EnumData";
 import axios from "axios";
-import {deleteCookie, setCookie} from "cookies-next";
-import {useRouter} from "next/navigation";
-import {API_URL} from "../constant";
-import {keyAuthentication} from "@/Constant/EnumData";
+import { deleteCookie, setCookie } from "cookies-next";
+import { API_URL } from "../constant";
 
 export class HandleReq {
   // private router = useRouter();
@@ -12,26 +11,31 @@ export class HandleReq {
   login = async ({ email, password }: { email: string; password: string }) => {
     try {
       if (email !== "" && password !== "") {
-        const response = await axios.post(
-          `${API_URL}auth/sign-in`,
-          { email: email, password: password },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Methods":
-                "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-              "Access-Control-Allow-Credentials": true,
-            },
-          }
-        ).then((res)=>{
-          setCookie(keyAuthentication.logged, true, { maxAge: 18 * 3600 }); // 18 h
-          setCookie(keyAuthentication.token, res.data.jwt, { maxAge: 18 * 3600 }); // 18 h
-          setCookie(keyAuthentication.role, res.data.role, { maxAge: 18 * 3600 });
-          window.location.reload();
-         // this.router.push("/")
-        });
-
+        const response = await axios
+          .post(
+            `${API_URL}auth/sign-in`,
+            { email: email, password: password },
+            {
+              headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods":
+                  "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+                "Access-Control-Allow-Credentials": true,
+              },
+            }
+          )
+          .then((res) => {
+            setCookie(keyAuthentication.logged, true, { maxAge: 18 * 3600 }); // 18 h
+            setCookie(keyAuthentication.token, res.data.jwt, {
+              maxAge: 18 * 3600,
+            }); // 18 h
+            setCookie(keyAuthentication.role, res.data.role, {
+              maxAge: 18 * 3600,
+            });
+            window.location.reload();
+            // this.router.push("/")
+          });
       }
     } catch (e) {
       return e;
@@ -39,7 +43,9 @@ export class HandleReq {
   };
   // logout
   logout = () => {
-    deleteCookie("logged");
+    deleteCookie(keyAuthentication.logged);
+    deleteCookie(keyAuthentication.role);
+    deleteCookie(keyAuthentication.token);
     window.location.reload();
     // this.router.push("/login");
   };

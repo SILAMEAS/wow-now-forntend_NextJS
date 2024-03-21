@@ -1,15 +1,14 @@
-import React from 'react';
-import ProtectRoute from "@/app/auth/ProtectRoute";
+import MSLogoutButton from "@/components/ms-button/MSLogoutButton";
 
 const User = () => {
-    return (
-        <ProtectRoute>
-            <div>
-            User Page
-        </div>
-        </ProtectRoute>
-
-    );
+  return (
+    <div className="container-full  h-[100vh]   flex-col justify-center items-center flex space-y-5">
+      <p>User page</p>
+      <div>
+        <MSLogoutButton />
+      </div>
+    </div>
+  );
 };
 
 export default User;

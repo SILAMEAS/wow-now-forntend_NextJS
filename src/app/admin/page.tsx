@@ -1,15 +1,16 @@
-"use client"
-import React from 'react';
-import ProtectRoute from "@/app/auth/ProtectRoute";
+"use client";
+
+import MSLogoutButton from "@/components/ms-button/MSLogoutButton";
 
 const Admin = () => {
-    return (
-        <ProtectRoute>
-            <div>
-                Admin Page
-            </div>
-        </ProtectRoute>
-    );
+  return (
+    <div className="container-full  h-[100vh]   flex-col justify-center items-center flex space-y-5">
+      <p>Admin Page</p>
+      <div>
+        <MSLogoutButton />
+      </div>
+    </div>
+  );
 };
 
 export default Admin;
