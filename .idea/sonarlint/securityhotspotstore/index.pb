@@ -11,3 +11,5 @@ M
 src/Constant/ConstantColor.ts,a\8\a8e2844d26fae4a3c1d6879393f93ee313477e9c
 @
 src/app/page.tsx,3\3\3393394e21dbac7686e91ad17c5283fb052d67f3
+H
+src/Constant/EnumData.ts,e\4\e47e1ddb49a9bdcac95aa5000497fea493c8142d

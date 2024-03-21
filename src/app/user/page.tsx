@@ -1,13 +1,10 @@
-import MSLogoutButton from "@/components/ms-button/MSLogoutButton";
+import LayoutUserPage from "./LayoutUserPage";
 
 const User = () => {
   return (
-    <div className="container-full  h-[100vh]   flex-col justify-center items-center flex space-y-5">
-      <p>User page</p>
-      <div>
-        <MSLogoutButton />
-      </div>
-    </div>
+    <LayoutUserPage>
+      <div className="bg-slate-500 h-full">LayoutUserPage</div>
+    </LayoutUserPage>
   );
 };
 
