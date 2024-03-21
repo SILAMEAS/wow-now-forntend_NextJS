@@ -9,6 +9,7 @@ export enum Url {
   owner = "/owner",
   home = "/",
   login = "/login",
+  register="/register"
 }
 export enum keyAuthentication {
   logged = "logged",

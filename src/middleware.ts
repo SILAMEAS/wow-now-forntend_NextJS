@@ -18,7 +18,7 @@ export default function middleWare(req: any) {
     return NextResponse.redirect(absoluteURL.toString());
   }
   // if try to access route page login while you login success it will return you follow the role
-  if (req.nextUrl.pathname === Url.login && req.cookies.get("logged")?.value) {
+  if ((req.nextUrl.pathname === Url.login||req.nextUrl.pathname === Url.register) && req.cookies.get("logged")?.value) {
     switch (req.cookies.get(keyAuthentication.role)?.value) {
       // redirect to user if your role is user
       case EnumData.ROLE_CUSTOMER: {
