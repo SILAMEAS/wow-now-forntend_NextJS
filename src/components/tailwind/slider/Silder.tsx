@@ -1,4 +1,4 @@
-const Silder = () => {
+const Slider = () => {
   return (
     <div
       id="carouselDarkVariant"
@@ -142,4 +142,4 @@ const Silder = () => {
   );
 };
 
-export default Silder;
+export default Slider;

@@ -1,15 +1,13 @@
 "use client";
-
-import MSLogoutButton from "@/components/ms-button/MSLogoutButton";
+import LayoutOwner from "@/app/owner/LayoutOwner";
+import React from "react";
+import DashBoardOwner from "@/app/owner/dashboard/page";
 
 const Ownerpage = () => {
   return (
-    <div className="container-full  h-[100vh]   flex-col justify-center items-center flex space-y-5">
-      <p>Ownerpage</p>
-      <div>
-        <MSLogoutButton />
-      </div>
-    </div>
+      <LayoutOwner>
+        <DashBoardOwner/>
+      </LayoutOwner>
   );
 };
 

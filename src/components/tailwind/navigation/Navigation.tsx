@@ -1,238 +1,154 @@
 export default function Navigation() {
   return (
-    <div className="h-fit">
-      {/* Main navigation container */}
-      <nav className="flex-no-wrap relative flex w-full items-center justify-between bg-zinc-50 py-2 shadow-dark-mild dark:bg-neutral-700 lg:flex-wrap lg:justify-start lg:py-4">
-        <div className="flex w-full flex-wrap items-center justify-between px-3">
-          {/* Hamburger button for mobile view */}
-          <button
-            className="block border-0 bg-transparent px-2 text-black/50 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
-            type="button"
-            data-twe-collapse-init=""
-            data-twe-target="#navbarSupportedContent1"
-            aria-controls="navbarSupportedContent1"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            {/* Hamburger icon */}
-            <span className="[&>svg]:w-7 [&>svg]:stroke-black/50 dark:[&>svg]:stroke-neutral-200">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </span>
-          </button>
-          {/* Collapsible navigation container */}
-          <div
-            className="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
-            id="navbarSupportedContent1"
-            data-twe-collapse-item=""
-          >
-            {/* Logo */}
+      <>
+        {/* component */}
+        {/* follow me on Twitter @asad_codes */}
+        <div className="flex flex-wrap place-items-center">
+          <section className="relative mx-auto">
+            {/* navbar */}
+            <nav className="flex justify-between bg-gray-900 text-white w-screen">
+              <div className="px-5 xl:px-12 py-6 flex w-full items-center">
+                <a className="text-3xl font-bold font-heading" href="#">
+                   <img className="h-9" src="logo.png" alt="logo"/>
+                  {/*Logo Here.*/}
+                </a>
+                {/* Nav Links */}
+                <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
+                  <li>
+                    <a className="hover:text-gray-200" href="#">
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a className="hover:text-gray-200" href="#">
+                      Catagory
+                    </a>
+                  </li>
+                  <li>
+                    <a className="hover:text-gray-200" href="#">
+                      Collections
+                    </a>
+                  </li>
+                  <li>
+                    <a className="hover:text-gray-200" href="#">
+                      Contact Us
+                    </a>
+                  </li>
+                </ul>
+                {/* Header Icons */}
+                <div className="hidden xl:flex items-center space-x-5 items-center">
+                  <a className="hover:text-gray-200" href="#">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                      <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      />
+                    </svg>
+                  </a>
+                  <a className="flex items-center hover:text-gray-200" href="#">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                      <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                      />
+                    </svg>
+                    <span className="flex absolute -mt-5 ml-4">
+                <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+              </span>
+                  </a>
+                  {/* Sign In / Register      */}
+                  <a className="flex items-center hover:text-gray-200" href="#">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 hover:text-gray-200"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                      <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              {/* Responsive navbar */}
+              <a className="xl:hidden flex mr-6 items-center" href="#">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 hover:text-gray-200"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                  <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span className="flex absolute -mt-5 ml-4">
+            <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+          </span>
+              </a>
+              <a className="navbar-burger self-center mr-12 xl:hidden" href="#">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 hover:text-gray-200"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                  <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </a>
+            </nav>
+          </section>
+        </div>
+        {/* Does this resource worth a follow? */}
+        <div className="absolute bottom-20 right-0 mb-4 mr-4 z-10">
+          <div>
             <a
-              className="mb-4 me-5 ms-2 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
-              href="#"
+                title="Follow me on twitter"
+                href="https://www.twitter.com/asad_codes"
+                target="_blank"
+                className="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12"
             >
               <img
-                src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp"
-                style={{ height: 15 }}
-                alt="TE Logo"
-                loading="lazy"
+                  className="object-cover object-center w-full h-full rounded-full"
+                  src="https://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2019/12/twitter-logo.jpg"
               />
             </a>
-            {/* Left navigation links */}
-            <ul
-              className="list-style-none me-auto flex flex-col ps-0 lg:flex-row"
-              data-twe-navbar-nav-ref=""
-            >
-              <li className="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref="">
-                {/* Dashboard link */}
-                <a
-                  className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                  href="#"
-                  data-twe-nav-link-ref=""
-                >
-                  Dashboard
-                </a>
-              </li>
-              {/* Team link */}
-              <li className="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref="">
-                <a
-                  className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                  href="#"
-                  data-twe-nav-link-ref=""
-                >
-                  Team
-                </a>
-              </li>
-              {/* Projects link */}
-              <li className="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref="">
-                <a
-                  className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-                  href="#"
-                  data-twe-nav-link-ref=""
-                >
-                  Projects
-                </a>
-              </li>
-            </ul>
-            {/* Left links */}
           </div>
-          {/* Right elements */}
-          <div className="relative flex items-center">
-            {/* Icon */}
-            <a className="me-4 text-neutral-600 dark:text-white" href="#">
-              <span className="[&>svg]:w-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
-                </svg>
-              </span>
-            </a>
-            {/* First dropdown container */}
-            <div
-              className="relative"
-              data-twe-dropdown-ref=""
-              data-twe-dropdown-alignment="end"
-            >
-              {/* First dropdown trigger */}
-              <a
-                className="me-4 flex items-center text-neutral-600 dark:text-white"
-                href="#"
-                id="dropdownMenuButton1"
-                role="button"
-                data-twe-dropdown-toggle-ref=""
-                aria-expanded="false"
-              >
-                {/* Dropdown trigger icon */}
-                <span className="[&>svg]:w-5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </span>
-                {/* Notification counter */}
-                <span className="absolute -mt-4 ms-2.5 rounded-full bg-danger px-[0.35em] py-[0.15em] text-[0.6rem] font-bold leading-none text-white">
-                  1
-                </span>
-              </a>
-              {/* First dropdown menu */}
-              <ul
-                className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg data-[twe-dropdown-show]:block dark:bg-surface-dark"
-                aria-labelledby="dropdownMenuButton1"
-                data-twe-dropdown-menu-ref=""
-              >
-                {/* First dropdown menu items */}
-                <li>
-                  <a
-                    className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                    href="#"
-                    data-twe-dropdown-item-ref=""
-                  >
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                    href="#"
-                    data-twe-dropdown-item-ref=""
-                  >
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                    href="#"
-                    data-twe-dropdown-item-ref=""
-                  >
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </div>
-            {/* Second dropdown container */}
-            <div
-              className="relative"
-              data-twe-dropdown-ref=""
-              data-twe-dropdown-alignment="end"
-            >
-              {/* Second dropdown trigger */}
-              <a
-                className="flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
-                href="#"
-                id="dropdownMenuButton2"
-                role="button"
-                data-twe-dropdown-toggle-ref=""
-                aria-expanded="false"
-              >
-                {/* User avatar */}
-                <img
-                  src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg"
-                  className="rounded-full"
-                  style={{ height: 25, width: 25 }}
-                  alt=""
-                  loading="lazy"
-                />
-              </a>
-              {/* Second dropdown menu */}
-              <ul
-                className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg data-[twe-dropdown-show]:block dark:bg-surface-dark"
-                aria-labelledby="dropdownMenuButton2"
-                data-twe-dropdown-menu-ref=""
-              >
-                {/* Second dropdown menu items */}
-                <li>
-                  <a
-                    className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                    href="#"
-                    data-twe-dropdown-item-ref=""
-                  >
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                    href="#"
-                    data-twe-dropdown-item-ref=""
-                  >
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-surface-dark dark:text-white dark:hover:bg-neutral-800/25 dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                    href="#"
-                    data-twe-dropdown-item-ref=""
-                  >
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          {/* Right elements */}
         </div>
-      </nav>
-    </div>
+      </>
+
   );
 }
