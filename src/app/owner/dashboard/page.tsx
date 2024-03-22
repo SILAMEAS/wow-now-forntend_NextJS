@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import {HandleReq} from "@/components/Utils/request/HandleReq";
 
@@ -184,9 +185,8 @@ const DashBoardOwner = () => {
                 <a
                     href="#"
                     className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group"
-                    onClick={req.logout}
                 >
-                  <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
+                  <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center" onClick={req.logout}>
                     <div>
 
                       <svg
