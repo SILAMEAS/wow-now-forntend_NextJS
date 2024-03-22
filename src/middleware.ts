@@ -1,70 +1,53 @@
-import { EnumData, keyAuthentication, Url } from "@/Constant/EnumData";
+
 import { NextResponse } from "next/server";
-const RoleRelateToUrl: Array<{ id: EnumData; value: Url }> = [
-  { id: EnumData.ROLE_ADMIN, value: Url.admin },
-  { id: EnumData.ROLE_CUSTOMER, value: Url.user },
-  { id: EnumData.ROLE_RESTAURANT_OWNER, value: Url.owner },
-];
-const routeProtect = [Url.owner, Url.admin, Url.user, Url.home];
+import {
+    EnumData,
+    keyAuthentication,
+    RoleRelateToUrl,
+    routeProtect,
+    routePublic,
+    Url
+} from "@/Constant/ConstantAuthConfig";
+
 export default function middleWare(req: any) {
-  let absoluteURL = new URL("/login", req.nextUrl.origin);
-  // if try to access route while not yet login
-  if (
-    routeProtect.includes(req.nextUrl.pathname) &&
-    !req.cookies.get("logged")?.value
-  ) {
-    // it will redirect to page login
-    const absoluteURL = new URL(Url.login, req.nextUrl.origin);
-    return NextResponse.redirect(absoluteURL.toString());
+  //   role from login
+  const role = req.cookies.get(keyAuthentication.role)?.value;
+  //   attribute form login page that make sure you already log in
+  const auth = req.cookies.get(keyAuthentication.logged)?.value;
+  // current pathname that you currently stand on
+  const pathname = req.nextUrl.pathname;
+    // Protect route via role login : if your role is user / you can't access to page admin and page owner restaurant
+    // we need make it like {id,url} to easy filter
+    const tryAccessOtherRoleFromRoleGiveByAuthentication = RoleRelateToUrl.filter(
+        (item) => item.id !== role
+    ).map((i) => i.value);
+  function handleRedirect(keyRedirect:Url){
+      return NextResponse.redirect(new URL(keyRedirect, req.nextUrl.origin).toString())
   }
-  // if try to access route page login while you login success it will return you follow the role
-  if ((req.nextUrl.pathname === Url.login||req.nextUrl.pathname === Url.register) && req.cookies.get("logged")?.value) {
-    switch (req.cookies.get(keyAuthentication.role)?.value) {
+  // try to access protect route with no authentication
+    if (
+        routeProtect.includes(pathname) &&
+        !auth
+    ) {
+        return handleRedirect(Url.login);
+    }
+    // routePublic :  try to access public route when you log in success it will redirect you to page by role authentication
+    // tryAccessOtherRoleFromRoleGiveByAuthentication : when you log in as user, but you try to access admin url or owner url it will redirect you to page by role authentication
+  if ((tryAccessOtherRoleFromRoleGiveByAuthentication.includes(pathname)||routePublic.includes(pathname))&& auth) {
+    switch (role) {
       // redirect to user if your role is user
       case EnumData.ROLE_CUSTOMER: {
-        const absoluteURL = new URL(Url.user, req.nextUrl.origin);
-        return NextResponse.redirect(absoluteURL.toString());
+          return handleRedirect(Url.user);
       }
       // redirect to user if your admin is admin
       case EnumData.ROLE_ADMIN: {
-        const absoluteURL = new URL(Url.admin, req.nextUrl.origin);
-        return NextResponse.redirect(absoluteURL.toString());
+          return handleRedirect(Url.admin);
       }
       // redirect to user if your owner is owner
       case EnumData.ROLE_RESTAURANT_OWNER: {
-        const absoluteURL = new URL(Url.owner, req.nextUrl.origin);
-        return NextResponse.redirect(absoluteURL.toString());
+          return handleRedirect(Url.owner);
       }
     }
-    const absoluteURL = new URL(Url.home, req.nextUrl.origin);
-    return NextResponse.redirect(absoluteURL.toString());
+      return handleRedirect(Url.home);
   }
-  // Protect route via role login : if your role is user / you can't acess to page admin and page owner restaurant
-  // we need make it like {id,url} to easy filter
-  const noCurrentRoute = RoleRelateToUrl.filter(
-    (item) => item.id !== req.cookies.get(keyAuthentication.role)?.value
-  ).map((i) => i.value);
-  if (
-    noCurrentRoute.includes(req.nextUrl.pathname) &&
-    req.cookies.get(keyAuthentication.logged)?.value
-  ) {
-    switch (req.cookies.get(keyAuthentication.role)?.value) {
-      case EnumData.ROLE_CUSTOMER: {
-        const absoluteURL = new URL(Url.user, req.nextUrl.origin);
-        return NextResponse.redirect(absoluteURL.toString());
-      }
-      case EnumData.ROLE_ADMIN: {
-        const absoluteURL = new URL(Url.admin, req.nextUrl.origin);
-        return NextResponse.redirect(absoluteURL.toString());
-      }
-      case EnumData.ROLE_RESTAURANT_OWNER: {
-        const absoluteURL = new URL(Url.owner, req.nextUrl.origin);
-        return NextResponse.redirect(absoluteURL.toString());
-      }
-    }
-    const absoluteURL = new URL(Url.home, req.nextUrl.origin);
-    return NextResponse.redirect(absoluteURL.toString());
-  }
-
-  NextResponse.redirect(absoluteURL.toString());
 }

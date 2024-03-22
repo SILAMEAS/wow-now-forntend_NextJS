@@ -2,7 +2,7 @@ const Cart = ({ setOpen, open }: { setOpen: any; open: boolean }) => {
   return (
     <div
       className={`w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8 absolute right-0 ${
-        open ? "" : "hidden"
+        !open ? "" : "hidden"
       }`}
       aria-modal="true"
       role="dialog"

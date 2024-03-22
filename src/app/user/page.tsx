@@ -1,6 +1,7 @@
 import LayoutUserPage from "./LayoutUserPage";
 
 import React from "react";
+import CardDetailPrepareToBy from "@/components/tailwind/cart/CardDetailPrepareToBuy";
 
 const User = () => {
   return (

@@ -11,22 +11,20 @@ const FooterNavigation = () => {
         {/* component */}
         <StyleLocal/>
         <LayoutFooter>
-          <IconFooterNavigation icon={<i className="far fa-home text-2xl pt-1 mb-1 block text-white"/>}
-                                title={<span className="block text-xs pb-1 text-white">Home</span>}
-                                href={"#"}/>
-          <IconFooterNavigation icon={<i className="far fa-solid fa-utensils text-2xl pt-1 mb-1 block text-white"/>}
-                                title={<span className="block text-xs pb-1 text-white">Foods</span>}
-                                href={"#"}/>
-          <IconFooterNavigation icon={<i className="far fa-solid fa-receipt text-2xl pt-1 mb-1 block text-white"></i>}
-                                title={<span className="block text-xs pb-1 text-white">Order</span>}
-                                href={"#"}/>
-          {/*<IconFooterNavigation icon={<i className="far fa-search text-2xl pt-1 mb-1 block text-white"/>}*/}
-          {/*                      title={<span className="block text-xs pb-1 text-white">Search</span>}*/}
-          {/*                      href={"#"}/>*/}
-          <IconFooterNavigation icon={<i className="far fa-regular fa-user text-2xl pt-1 mb-1 block text-white"/>}
-                                title={<span className="block text-xs pb-1 text-white">Profile</span>}
-                                href={"#"}
-          onClick={req.logout}/>
+          <IconFooterNavigation classNameIcon={"far fa-home"}
+                                title={"ទំព័រដើម"}
+                                href={"/user"}/>
+          <IconFooterNavigation classNameIcon={"far fa-solid fa-utensils"}
+                                title={"អាហារ"}
+                                href={"/user/food"}/>
+          <IconFooterNavigation classNameIcon={"far fa-solid fa-receipt"}
+                                title={"បញ្ជារទិញ"}
+                                href={"/user/order"}/>
+          <IconFooterNavigation classNameIcon={"far fa-regular fa-user"}
+                                title={"របស់ខ្ញុំ"}
+                                href={"/user/profile"}
+          // onClick={req.logout}
+          />
         </LayoutFooter>
 
       </div>
@@ -42,7 +40,7 @@ const StyleLocal = () => <style
 />
 const LayoutFooter = ({children}: PropsWithChildren) => {
   return <div className=" bg-white flex items-center justify-center">
-    <div className="w-screen max-w-xxl mx-auto flex bg-black">{children}</div>
+    <div className="w-screen max-w-xxl mx-auto flex bg-white">{children}</div>
   </div>
 }
 export default FooterNavigation;

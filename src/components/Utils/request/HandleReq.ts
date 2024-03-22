@@ -1,9 +1,9 @@
 import {$headers} from "@/components/Utils/reqHeader";
-import {EnumData, keyAuthentication} from "@/Constant/EnumData";
 import axios from "axios";
 import {deleteCookie, setCookie} from "cookies-next";
 import {API_URL} from "../constant";
 import {ICreateAccount} from "@/app/register/page";
+import {EnumData, keyAuthentication} from "@/Constant/ConstantAuthConfig";
 
 export type DtoCreateAccount = {
     fullName:string;

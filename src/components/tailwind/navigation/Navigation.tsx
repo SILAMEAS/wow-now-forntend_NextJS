@@ -1,18 +1,21 @@
+"use client"
+import CardDetailPrepareToBy from "@/components/tailwind/cart/CardDetailPrepareToBuy";
+import React from "react";
+
 export default function Navigation() {
+    const [open,setOpen]=React.useState<boolean>(false);
   return (
       <>
+          <CardDetailPrepareToBy open={open} setOpen={setOpen}/>
         {/* component */}
         {/* follow me on Twitter @asad_codes */}
         <div className="flex flex-wrap place-items-center">
           <section className="relative mx-auto">
             {/* navbar */}
             <nav className="flex justify-between bg-gray-900 text-white w-screen">
-              <div className="px-5 xl:px-12 py-6 flex w-full items-center">
-                <a className="text-3xl font-bold font-heading" href="#">
-                   <img className="h-9" src="logo.png" alt="logo"/>
-                  {/*Logo Here.*/}
-                </a>
-                {/* Nav Links */}
+              <div className="px-5 xl:px-12 py-3 flex w-full items-center">
+                    {/*<LogoRestaurant/>*/}
+                {/* Nav Links */}d
                 <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                   <li>
                     <a className="hover:text-gray-200" href="#">
@@ -53,7 +56,7 @@ export default function Navigation() {
                       />
                     </svg>
                   </a>
-                  <a className="flex items-center hover:text-gray-200" href="#">
+                  <a className="flex items-center hover:text-gray-200 cursor-pointer" onClick={()=>setOpen(true)}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -131,22 +134,6 @@ export default function Navigation() {
               </a>
             </nav>
           </section>
-        </div>
-        {/* Does this resource worth a follow? */}
-        <div className="absolute bottom-20 right-0 mb-4 mr-4 z-10">
-          <div>
-            <a
-                title="Follow me on twitter"
-                href="https://www.twitter.com/asad_codes"
-                target="_blank"
-                className="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12"
-            >
-              <img
-                  className="object-cover object-center w-full h-full rounded-full"
-                  src="https://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2019/12/twitter-logo.jpg"
-              />
-            </a>
-          </div>
         </div>
       </>
 

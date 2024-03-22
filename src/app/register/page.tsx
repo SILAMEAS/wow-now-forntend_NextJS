@@ -1,8 +1,8 @@
 "use client";
-import { HandleReq } from "@/components/Utils/request/HandleReq";
-import { SubmitHandler, useForm } from "react-hook-form";
-import {Select} from "@/components/tailwind/select/Select";
-import {EnumData} from "@/Constant/EnumData";
+import {HandleReq} from "@/components/Utils/request/HandleReq";
+import {SubmitHandler, useForm} from "react-hook-form";
+import {EnumData} from "@/Constant/ConstantAuthConfig";
+
 export type ICreateAccount = {
     firstName:string;
     LastName:string;

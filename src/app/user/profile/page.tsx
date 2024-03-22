@@ -1,10 +1,13 @@
 import React from 'react';
+import LayoutUserPage from "@/app/user/LayoutUserPage";
 
 const Profile = () => {
   return (
-      <div>
-        Profile
-      </div>
+      <LayoutUserPage>
+          <div className="h-full flex justify-center items-center">
+              <p className="text-white"> Profile page</p>
+          </div>
+      </LayoutUserPage>
   );
 };
 
