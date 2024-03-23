@@ -1,10 +1,13 @@
+"use client"
 import React from 'react';
 import {Avatar, Badge, IconButton} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {pink} from "@mui/material/colors";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import "./index.css"
+import {HandleReq} from "@/components/Utils/request/HandleReq";
 const Navbar = () => {
+    const req=new HandleReq();
     return (
       <div className={`px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 flex justify-between `} >
           {/** logo **/}
@@ -21,8 +24,8 @@ const Navbar = () => {
                   </IconButton>
               </div>
 
-             <div>
-                 <Avatar sx={{bgcolor:"white",color:pink.A400,fontWeight:600}} >MS</Avatar>
+             <div onClick={req.logout}>
+                 <Avatar sx={{bgcolor:"white",color:pink.A400,fontWeight:600}}>MS</Avatar>
              </div>
               <div>
                   <IconButton>
