@@ -8,7 +8,7 @@ const ProtectRoute = ({children}:PropsWithChildren) => {
     return (
         <div>
             {cookies().get(keyAuthentication.logged)&&<Navbar/>}
-            {cookies().get(keyAuthentication.logged)?children:<LoginPage/>}
+            {children}
         </div>
     );
 };

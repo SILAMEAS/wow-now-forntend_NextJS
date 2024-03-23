@@ -1,17 +1,25 @@
 
 import { NextResponse } from "next/server";
-import {
-    EnumData,
-    keyAuthentication,
-    RoleRelateToUrl,
-    routeProtect,
-    routePublic,
-    Url
-} from "@/Constant/ConstantAuthConfig";
-
+import {EnumData, keyAuthentication, routePublic, Url} from "@/Constant/ConstantAuthConfig";
+const RoleRelateToUrl: Array<{ id: EnumData; value: Url }> = [
+    { id: EnumData.ROLE_ADMIN, value: Url.admin },
+    { id: EnumData.ROLE_CUSTOMER, value: Url.user },
+    { id: EnumData.ROLE_RESTAURANT_OWNER, value: Url.owner },
+];
+const routeProtect = [Url.owner, Url.admin, Url.user, Url.home];
 export default function middleWare(req: any) {
-    const absoluteURL = new URL(Url.home, req.nextUrl.origin);
-    if (req.nextUrl.pathname === Url.login && req.cookies.get("logged")?.value) {
+    let absoluteURL = new URL("/login", req.nextUrl.origin);
+    // if try to access route while not yet login
+    if (
+        routeProtect.includes(req.nextUrl.pathname) &&
+        !req.cookies.get("logged")?.value
+    ) {
+        // it will redirect to page login
+        const absoluteURL = new URL(Url.login, req.nextUrl.origin);
+        return NextResponse.redirect(absoluteURL.toString());
+    }
+    // if try to access route page login while you login success it will return you follow the role
+    if ((req.nextUrl.pathname === Url.login||req.nextUrl.pathname === Url.register||routePublic.includes(req.nextUrl.pathname)) && req.cookies.get("logged")?.value) {
         switch (req.cookies.get(keyAuthentication.role)?.value) {
             // redirect to user if your role is user
             case EnumData.ROLE_CUSTOMER: {
@@ -60,5 +68,4 @@ export default function middleWare(req: any) {
     }
 
     NextResponse.redirect(absoluteURL.toString());
-
 }
