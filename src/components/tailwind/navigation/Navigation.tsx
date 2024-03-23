@@ -1,5 +1,5 @@
 "use client"
-import CardDetailPrepareToBy from "@/components/tailwind/cart/CardDetailPrepareToBuy";
+import CardDetailPrepareToBy from "@/components/tailwind/cart/prepare-card-to-buy/CardDetailPrepareToBuy";
 import React from "react";
 
 export default function Navigation() {
@@ -96,7 +96,7 @@ export default function Navigation() {
                 </div>
               </div>
               {/* Responsive navbar */}
-              <a className="xl:hidden flex mr-6 items-center" href="#">
+              <a className="xl:hidden flex mr-6 items-center" onClick={()=>setOpen(true)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 hover:text-gray-200"

@@ -1,5 +1,5 @@
 "use client";
-import LayoutOwner from "@/app/owner/LayoutOwner";
+import LayoutOwner from "@/app/owner/layout/LayoutOwner";
 import React from "react";
 import DashBoardOwner from "@/app/owner/dashboard/page";
 

@@ -27,6 +27,8 @@
     "react-final-form": "^6.5.9",
     "react-hook-form": "^7.51.1",
     "react-pro-sidebar": "^1.1.0-alpha.1",
+    "react-swipeable-views": "^0.14.0",
+    "react-swipeable-views-utils": "^0.14.0",
     "styled-components": "^6.0.7",
     "typescript": "5.1.3"
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-import LayoutUserPage from "@/app/user/LayoutUserPage";
+import LayoutUserPage from "@/app/user/layout/LayoutUserPage";
 
 const Order = () => {
   return (

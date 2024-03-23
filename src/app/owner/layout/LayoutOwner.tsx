@@ -1,7 +1,4 @@
 import {PropsWithChildren} from "react";
-import Navigation from "@/components/tailwind/navigation/Navigation";
-import FooterNavigation from "@/components/tailwind/footer/footerNavigation/FooterNavigation";
-import DashBoardOwner from "@/app/owner/dashboard/page";
 
 export default function LayoutOwner({ children }: PropsWithChildren) {
   return (

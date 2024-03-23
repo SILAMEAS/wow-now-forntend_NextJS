@@ -6,7 +6,7 @@ export default function LayoutUserPage({ children }: PropsWithChildren) {
   return (
     <div className="h-screen overflow-hidden flex flex-col justify-between">
       <Navigation />
-      <div className="h-full bg-white">{children}</div>
+      <div className="h-[1000px] bg-red-500">{children}</div>
         <FooterNavigation/>
     </div>
   );
