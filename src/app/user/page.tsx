@@ -1,5 +1,4 @@
 import React from 'react';
-import {Stack, Typography} from "@mui/material";
 import './index.css'
 import {MultiItemCarousel} from "@/components/tw-food/MultiItemCarousel";
 import ListCardOfRestaurants from "@/components/tw-restaurant/ListCardRestaurants";
