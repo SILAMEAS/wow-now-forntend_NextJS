@@ -13,11 +13,10 @@ const ListCardOfRestaurants = () => {
         });
 
     },[])
-    console.log("listRestaurants",listRestaurants)
     return (
         <div className={`flex flex-wrap gap-[20px] mx-auto  justify-center`}>
             {
-                listRestaurants.length>0&&listRestaurants.map(item=>
+                listRestaurants?.length>0&&listRestaurants.map(item=>
                 <CardRestaurant data={item} key={item.id}/>
                 )
             }

@@ -1,22 +1,24 @@
 "use client"
 import React from 'react';
-import {MockitemData} from "@/components/tw-food/MockData";
 import {IconButton} from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import {useRouter} from "next/navigation";
 import {DtoRestaurant} from "@/utils/api/dto/response/DtoListRestaurant";
+import {RestaurantRequest} from "@/utils/api/request/RestaurantRequest";
+
 interface ICardRestaurant{
     data:DtoRestaurant
 }
 const CardRestaurant = ({data}:ICardRestaurant) => {
     const navigate=useRouter();
+    const restaurantRequest=new RestaurantRequest();
     return (
-        <div className={`h-[22rem] w-[20rem] rounded-xl bg-black/10 overflow-hidden relative ${data?.open?'cursor-pointer':"cursor-not-allowed"} ${!data?.open&&"opacity-50"}`} onClick={()=>data.id&&navigate.push("/user/restaurant/"+data.id)}>
+        <div className={`h-[22rem] w-[20rem] rounded-xl bg-black/10 overflow-hidden relative ${data?.open?'cursor-pointer':"cursor-not-allowed"} ${!data?.open&&"opacity-50"} z-10`}>
             {/** header of card **/}
-            <section>
+            <section onClick={()=>data.id&&navigate.push("/user/restaurant/"+data.id)}>
                 {/** image of restaurant **/}
-                <img className={`object-center object-cover h-[40%] w-full`} src={MockitemData[0].img}/>
+                <img className={`object-center object-cover h-[40%] w-full`} src={data.images[0]}/>
                 {/** status of restaurant **/}
                 <p className={`${data?.open?"bg-green-700":"bg-red-700"}  py-[5px] px-[10px] absolute left-[10px] top-[10px] text-white text-xs font-semibold rounded-full`}>
                     {data?.open?"OPEN":"CLOSE"}
@@ -33,10 +35,17 @@ const CardRestaurant = ({data}:ICardRestaurant) => {
                   <p className={`text-gray-500 text-md`}>
                       {data?.description}
                   </p>
+                  {/** description of restaurant **/}
+                  <p className={`text-gray-500 text-md`}>
+                      {data?.openingHours}
+                  </p>
               </div>
-                <IconButton disableRipple disableFocusRipple disableTouchRipple>
+                <IconButton disableRipple disableFocusRipple disableTouchRipple onClick={async ()=>{
+                   await restaurantRequest.addToFavoriteRestaurant(data.id);
+
+                }}>
                     {
-                        data?.favorite?<FavoriteIcon sx={{color:"red"}}/>:<FavoriteBorderIcon/>
+                       !!(data?.favorite)?<FavoriteIcon sx={{color:"red"}}/>:<FavoriteBorderIcon/>
                     }
                 </IconButton>
             </section>

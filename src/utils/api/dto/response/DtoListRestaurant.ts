@@ -7,4 +7,5 @@ export interface DtoRestaurant{
     favorite:boolean;
     description:string;
     openingHours:string;
+    images:Array<string>;
 }
