@@ -1,5 +1,5 @@
 "use client";
-import { HandleReq } from "@/components/Utils/request/HandleReq";
+import { UserRequest } from "@/utils/api/request/UserRequest";
 import { SubmitHandler, useForm } from "react-hook-form";
 import React from "react";
 type Inputs = {
@@ -17,7 +17,7 @@ const ForgotPassword = () => {
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         setLoading(true);
         // console.log("Data",data);
-        // const req = new HandleReq();
+        // const req = new UserRequest();
         // await req.login(data).then(()=>setLoading(false));
     };
     return  <div className="bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">

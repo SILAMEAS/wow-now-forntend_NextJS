@@ -1,9 +1,9 @@
 "use client"
 import React from 'react';
-import {HandleReq} from "@/components/Utils/request/HandleReq";
+import {UserRequest} from "@/utils/api/request/UserRequest";
 
 const DashBoardOwner = () => {
-  const req = new HandleReq();
+  const req = new UserRequest();
   return (
       <div >
         {/* component */}

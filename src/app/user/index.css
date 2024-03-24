@@ -1,18 +1,17 @@
 .banner{
-    background-image: url("../../../asset/backgroud/backgroundImage.png");
+    background-image: url("../../asset/backgroud/backgroundImage.png");
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 90vh;
+    height: 70vh;
 }
 .fadout{
 
 }
 .cover{
     width: 100%;
-    height: 90vh;
+    height: 70vh;
     background-color: black;
     opacity: 0.4;
-
 }
 

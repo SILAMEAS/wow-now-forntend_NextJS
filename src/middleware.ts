@@ -1,6 +1,6 @@
 
 import { NextResponse } from "next/server";
-import {EnumData, keyAuthentication, routePublic, Url} from "@/Constant/ConstantAuthConfig";
+import {EnumData, keyAuthentication, routePublic, Url} from "@/Constant/auth/ConstantAuthConfig";
 const RoleRelateToUrl: Array<{ id: EnumData; value: Url }> = [
     { id: EnumData.ROLE_ADMIN, value: Url.admin },
     { id: EnumData.ROLE_CUSTOMER, value: Url.user },

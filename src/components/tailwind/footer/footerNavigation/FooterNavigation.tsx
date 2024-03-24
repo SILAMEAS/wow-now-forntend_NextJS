@@ -2,10 +2,10 @@
 import React, {PropsWithChildren} from 'react';
 import IconFooterNavigation
   from "@/components/tailwind/footer/footerNavigation/components/IconFooterNavigation";
-import {HandleReq} from "@/components/Utils/request/HandleReq";
+import {UserRequest} from "@/utils/api/request/UserRequest";
 
 const FooterNavigation = () => {
-  const req=new HandleReq();
+  const req=new UserRequest();
   return (
       <div className='h-fit'>
         {/* component */}

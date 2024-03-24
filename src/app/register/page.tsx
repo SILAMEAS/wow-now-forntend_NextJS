@@ -1,7 +1,7 @@
 "use client";
-import {HandleReq} from "@/components/Utils/request/HandleReq";
+import {UserRequest} from "@/utils/api/request/UserRequest";
 import {SubmitHandler, useForm} from "react-hook-form";
-import {EnumData} from "@/Constant/ConstantAuthConfig";
+import {EnumData} from "@/Constant/auth/ConstantAuthConfig";
 
 export type ICreateAccount = {
     firstName:string;
@@ -27,7 +27,7 @@ const Register = () => {
     const passMatchCon=watch("password")===watch("confirmPassword");
     const onSubmit: SubmitHandler<ICreateAccount> = async (data) => {
         console.log("Data",data);
-        const req = new HandleReq();
+        const req = new UserRequest();
         await req.createAcc(data);
     };
     return (
