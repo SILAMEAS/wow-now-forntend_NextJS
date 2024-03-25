@@ -24,7 +24,7 @@ const HomeUser = () => {
                 <section>
                     {/** label list food **/}
                     <p className={`py-5 lg:py-10 font-semibold text-xl lg:text-3xl`}>Top Meet</p>
-                    <MultiItemCarousel/>
+                    {/*<MultiItemCarousel/>*/}
                 </section>
                 {/** list top food **/}
                 <section>

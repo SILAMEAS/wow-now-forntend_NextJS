@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import {IconButton} from "@mui/material";
+import {CircularProgress, IconButton} from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import {useRouter} from "next/navigation";
@@ -13,6 +13,8 @@ interface ICardRestaurant{
 const CardRestaurant = ({data}:ICardRestaurant) => {
     const navigate=useRouter();
     const restaurantRequest=new RestaurantRequest();
+    const [favorite, setFavorite] = React.useState<boolean>(!!(data?.favorite));
+    const [loading, setLoading] = React.useState<boolean>(false);
     return (
         <div className={`h-[22rem] w-[20rem] rounded-xl bg-black/10 overflow-hidden relative ${data?.open?'cursor-pointer':"cursor-not-allowed"} ${!data?.open&&"opacity-50"} z-10`}>
             {/** header of card **/}
@@ -40,12 +42,16 @@ const CardRestaurant = ({data}:ICardRestaurant) => {
                       {data?.openingHours}
                   </p>
               </div>
-                <IconButton disableRipple disableFocusRipple disableTouchRipple onClick={async ()=>{
-                   await restaurantRequest.addToFavoriteRestaurant(data.id);
-
+                <IconButton disabled={loading||!data?.open} disableRipple disableFocusRipple disableTouchRipple onClick={async ()=>{
+                    setLoading(true);
+                    await restaurantRequest.addToFavoriteRestaurant(data.id).then(()=>{
+                        setFavorite(!favorite);
+                            setLoading(false);
+                    })
                 }}>
                     {
-                       !!(data?.favorite)?<FavoriteIcon sx={{color:"red"}}/>:<FavoriteBorderIcon/>
+                        loading?<CircularProgress size={20} />:
+                        favorite?<FavoriteIcon sx={{color:"red"}}/>:<FavoriteBorderIcon/>
                     }
                 </IconButton>
             </section>
