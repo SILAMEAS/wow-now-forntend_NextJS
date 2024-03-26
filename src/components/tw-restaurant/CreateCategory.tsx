@@ -1,4 +1,3 @@
-"use client"
 import React from 'react';
 import {Button, TextField} from "@mui/material";
 import {RestaurantRequest} from "@/utils/api/request/RestaurantRequest";

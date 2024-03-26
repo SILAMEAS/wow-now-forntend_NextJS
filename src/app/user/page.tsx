@@ -1,11 +1,14 @@
 import React from 'react';
 import './index.css'
-import {MultiItemCarousel} from "@/components/tw-food/MultiItemCarousel";
 import ListCardOfRestaurants from "@/components/tw-restaurant/ListCardRestaurants";
+import {MultiItemCarousel} from "@/components/tw-food/MultiItemCarousel";
+import {Button} from "@mui/material";
+import BlockRestaurant from "@/components/tw-restaurant/BlockRestaurant";
+import BlockFood from "@/components/tw-food/BlockFood";
 
 const HomeUser = () => {
     return (
-        <div className={``}>
+        <div className={`pb-10`}>
             {/** banner **/}
             <section className={`banner -z-50 relative flex flex-col justify-center items-center bg-white`}>
                 {/** text on banner image **/}
@@ -21,11 +24,8 @@ const HomeUser = () => {
             {/** list item **/}
             <div className={`px-5 lg:px-10`}>
                 {/** list top food **/}
-                <section>
-                    {/** label list food **/}
-                    <p className={`py-5 lg:py-10 font-semibold text-xl lg:text-3xl`}>Top Meet</p>
-                    {/*<MultiItemCarousel/>*/}
-                </section>
+                <BlockFood/>
+
                 {/** list top food **/}
                 <section>
                     {/** label list restaurants**/}

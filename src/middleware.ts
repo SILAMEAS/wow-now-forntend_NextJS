@@ -49,7 +49,7 @@ export default function middleWare(req: any) {
         const absoluteURL = new URL(Url.home, req.nextUrl.origin);
         return NextResponse.redirect(absoluteURL.toString());
     }
-    // if try to access route page login while you login success it will return you follow the role
+    // if try to access route page login while you log in success it will return you follow the role
     if (routePublic.includes(req.nextUrl.pathname)&& req.cookies.get("logged")?.value) {
         switch (req.cookies.get(keyAuthentication.role)?.value) {
             // redirect to user if your role is user
