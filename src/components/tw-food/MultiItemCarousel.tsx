@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import {Button, CircularProgress, List, ListItem} from "@mui/material";
+import {Button, CircularProgress, List, ListItem, Stack} from "@mui/material";
 import ItemCarousel from "@/components/tw-food/ItemCarousel";
 import {ConstantStyle} from "@/Constant/style/ConstantColor";
 import {FoodApi} from "@/utils/api/request/ Food/FoodApi";
@@ -31,16 +31,16 @@ export const MultiItemCarousel=({setHasNext,page,setOutLoading}:{setHasNext:any,
         return <>No data</>
     }
     return (
-        <List sx={{display:'flex',
-            width:loading?"100%":"fit-content",alignItems:"center"}}>
+        <div className={`flex w-auto  overflow-y-scroll 
+        `}>
             {
                 loading?<CircularProgress size={60} /> :
-                listFoods?.contents?.map(item=>
-                    <ListItem key={item.id}>
-                        <ItemCarousel image={item.images[0]} title={item.name}/>
-                    </ListItem>
-                )
+                    listFoods?.contents?.map(item=>
+                        <ListItem key={item.id}>
+                            <ItemCarousel image={item.images[0]} title={item.name}/>
+                        </ListItem>
+                    )
             }
-        </List>
+        </div>
     );
 }

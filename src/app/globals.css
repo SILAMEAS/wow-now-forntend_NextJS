@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* For webkit-based browsers (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #E91E63;
+    border-radius: 20px;
+}
+
+/*!* For Firefox *!*/
+/*scrollbar-width: thin;*/
+/*scrollbar-color: #4F46E5 #FFFFFF; !* thumb and track colors *!*/
+
