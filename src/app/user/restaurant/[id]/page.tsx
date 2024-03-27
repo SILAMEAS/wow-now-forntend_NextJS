@@ -1,5 +1,4 @@
 import React from 'react';
-import MSLogoutButton from "@/components/ms-button/MSBackHistoryRouteButton";
 import CreateCategory from "@/components/tw-restaurant/CreateCategory";
 
 const RestaurantById = ({params:{id}}:{params:{id:number}}) => {

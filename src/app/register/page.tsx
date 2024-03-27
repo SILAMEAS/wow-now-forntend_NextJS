@@ -1,7 +1,8 @@
 "use client";
-import {UserRequest} from "@/utils/api/request/UserRequest";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {EnumData} from "@/Constant/auth/ConstantAuthConfig";
+import {useRegisterMutation} from "@/redux/api/service/user/userApi";
+import {IReqCreateAccount} from "@/redux/api/service/user/typeUser";
 
 export type ICreateAccount = {
     firstName:string;
@@ -15,7 +16,6 @@ export type ICreateAccount = {
     postalCode:string;
     country:string;
     role:EnumData;
-
 };
 const Register = () => {
     const {
@@ -25,10 +25,11 @@ const Register = () => {
         formState: { errors },
     } = useForm<ICreateAccount>();
     const passMatchCon=watch("password")===watch("confirmPassword");
+    const [registerAcc]=useRegisterMutation();
     const onSubmit: SubmitHandler<ICreateAccount> = async (data) => {
-        console.log("Data",data);
-        const req = new UserRequest();
-        await req.createAcc(data);
+        const {email,password,confirmPassword,country,city,role,stateProvince,postalCode,firstName,LastName,streetAddress}=data;
+        const dataDto:IReqCreateAccount={fullName:firstName+" "+LastName,address:{streetAddress,city,country,postalCode,stateProvince},password,email,role};
+        await registerAcc(dataDto).unwrap();
     };
     return (
         <>

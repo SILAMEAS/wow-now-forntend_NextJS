@@ -5,9 +5,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import {pink} from "@mui/material/colors";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import "./index.css"
-import {UserRequest} from "@/utils/api/request/UserRequest";
+import {useLogout} from "@/redux/api/hook/useLogout";
 const Navbar = () => {
-    const req=new UserRequest();
     return (
       <div className={`px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 flex justify-between `} >
           {/** logo **/}
@@ -24,7 +23,7 @@ const Navbar = () => {
                   </IconButton>
               </div>
 
-             <div onClick={req.logout}>
+             <div onClick={useLogout}>
                  <Avatar sx={{bgcolor:"white",color:pink.A400,fontWeight:600}}>MS</Avatar>
              </div>
               <div>

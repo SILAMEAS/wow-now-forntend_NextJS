@@ -1,7 +1,7 @@
 "use client";
-import { UserRequest } from "@/utils/api/request/UserRequest";
-import { SubmitHandler, useForm } from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import React from "react";
+
 type Inputs = {
     email: string;
     password: string;

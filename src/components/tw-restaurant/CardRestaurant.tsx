@@ -4,17 +4,25 @@ import {CircularProgress, IconButton} from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import {useRouter} from "next/navigation";
-import {DtoRestaurant} from "@/utils/api/dto/response/DtoListRestaurant";
 import {RestaurantRequest} from "@/utils/api/request/RestaurantRequest";
+import {IResRestaurant} from "@/redux/api/service/restaurant/typeRestaurant";
+import {useAppSelector} from "@/redux/api/hook/hoots";
+import {useAddRestaurantFavMutation} from "@/redux/api/service/restaurant/restaurantApi";
 
 interface ICardRestaurant{
-    data:DtoRestaurant
+    data:IResRestaurant
 }
 const CardRestaurant = ({data}:ICardRestaurant) => {
     const navigate=useRouter();
-    const restaurantRequest=new RestaurantRequest();
-    const [favorite, setFavorite] = React.useState<boolean>(!!(data?.favorite));
+    const {profile}= useAppSelector(state=>state.authReducer)
+    const [favorite, setFavorite] = React.useState<boolean>(false);
+    const [addFav]=useAddRestaurantFavMutation();
     const [loading, setLoading] = React.useState<boolean>(false);
+    React.useMemo(()=>{
+        if(profile?.favourites.find(i=>i.id===data.id)){
+            setFavorite(true);
+        }
+    },[data])
     return (
         <div className={`h-[22rem] w-[20rem] rounded-xl bg-black/10 overflow-hidden relative ${data?.open?'cursor-pointer':"cursor-not-allowed"} ${!data?.open&&"opacity-50"} z-10`}>
             {/** header of card **/}
@@ -44,10 +52,11 @@ const CardRestaurant = ({data}:ICardRestaurant) => {
               </div>
                 <IconButton disabled={loading||!data?.open} disableRipple disableFocusRipple disableTouchRipple onClick={async ()=>{
                     setLoading(true);
-                    await restaurantRequest.addToFavoriteRestaurant(data.id).then(()=>{
+                    await addFav({id:data.id}).unwrap().then(()=>{
                         setFavorite(!favorite);
-                            setLoading(false);
+                        setLoading(false);
                     })
+
                 }}>
                     {
                         loading?<CircularProgress size={20} />:
