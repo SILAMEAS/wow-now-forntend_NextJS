@@ -1,10 +1,8 @@
 "use client"
 import React from 'react';
-import {UserRequest} from "@/utils/api/request/UserRequest";
 import {useLogout} from "@/redux/api/hook/useLogout";
 
 const DashBoardOwner = () => {
-  const req = new UserRequest();
   return (
       <div >
         {/* component */}

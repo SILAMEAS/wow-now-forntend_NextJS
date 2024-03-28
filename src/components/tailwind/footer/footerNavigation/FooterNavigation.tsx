@@ -1,11 +1,8 @@
 "use client"
 import React, {PropsWithChildren} from 'react';
-import IconFooterNavigation
-  from "@/components/tailwind/footer/footerNavigation/components/IconFooterNavigation";
-import {UserRequest} from "@/utils/api/request/UserRequest";
+import IconFooterNavigation from "@/components/tailwind/footer/footerNavigation/components/IconFooterNavigation";
 
 const FooterNavigation = () => {
-  const req=new UserRequest();
   return (
       <div className='h-fit'>
         {/* component */}

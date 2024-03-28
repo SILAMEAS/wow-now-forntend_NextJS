@@ -1,5 +1,4 @@
 "use client";
-import { UserRequest } from "@/utils/api/request/UserRequest";
 
 export default function MSLogoutButton() {
   // const req = new UserRequest();
