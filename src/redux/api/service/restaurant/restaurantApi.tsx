@@ -1,40 +1,18 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import {createApi} from "@reduxjs/toolkit/query/react";
 import {METHOD} from "@/redux/api/hook/method/Method";
-import {IReqListRestaurant, IResListRestaurant} from "@/redux/api/service/restaurant/typeRestaurant";
-import {getCookie} from "cookies-next";
+import {IReqListRestaurant, IResListRestaurant, IResRestaurant} from "@/redux/api/service/restaurant/typeRestaurant";
+import {fetchBaseQueryCustom} from "@/redux/api/service/header/baseQueryCustom";
 
 export const restaurantApi = createApi({
     reducerPath: "restaurantApi",
     refetchOnFocus: true,
-    tagTypes: ['restaurant'],
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.NEXT_PUBLIC_BASE_URL+"api/",
-        prepareHeaders: headers => {
-            headers.set(
-                'Authorization',
-                `Bearer ` + getCookie("token"),
-            );
-            headers.set(
-                "Content-Type",
-                "application/json"
-            );
-            headers.set(
-                "Access-Control-Allow-Origin", "*"
-            );
-            headers.set(
-                "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            );
-            headers.set(
-                "Access-Control-Allow-Credentials","true"
-            );
-            return headers;
-        },
-    }),
+    tagTypes: ['restaurant','restaurantById'],
+    baseQuery: fetchBaseQueryCustom,
     endpoints: (builder) => ({
         getRestaurants: builder.query<IResListRestaurant, IReqListRestaurant>(
             {
                 query: (body) => ({
-                    url: `restaurants/pagination`,
+                    url: `restaurants`,
                     method: METHOD.Get,
                     params:body
                 }),
@@ -51,12 +29,22 @@ export const restaurantApi = createApi({
                 invalidatesTags: ['restaurant']
             }
         ),
+        getRestaurantById: builder.query<IResRestaurant, {id:number}>(
+            {
+                query: ({id}) => ({
+                    url: `restaurants/${id}`,
+                    method: METHOD.Get
+                }),
+                providesTags:['restaurantById']
+            }
+        ),
 
     }),
 });
 
 export const {
     useGetRestaurantsQuery,
-    useAddRestaurantFavMutation
+    useAddRestaurantFavMutation,
+    useGetRestaurantByIdQuery
 } = restaurantApi;
 

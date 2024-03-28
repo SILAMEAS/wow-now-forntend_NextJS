@@ -20,6 +20,6 @@ export interface IResRestaurant {
 }
 
 
-
+ export const defaultValuePagination={pageNo:1,pageSize:10,sortBy:"",sortOrder:"asc"}
 
 export interface IReqListRestaurant extends IReqListFood {}

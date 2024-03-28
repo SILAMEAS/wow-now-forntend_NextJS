@@ -1,28 +1,38 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {METHOD} from "@/redux/api/hook/method/Method";
-import {IReqListFood} from "@/redux/api/service/food/typeFood";
+import {IReqListFood, IResListFoods} from "@/redux/api/service/food/typeFood";
+import {fetchBaseQueryCustom} from "@/redux/api/service/header/baseQueryCustom";
 
 export const foodApi = createApi({
-    reducerPath: "restaurantApi",
+    reducerPath: "foodApi",
     refetchOnFocus: true,
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
-    }),
+    tagTypes: ['foods'],
+    baseQuery:fetchBaseQueryCustom,
     endpoints: (builder) => ({
-        getFoods: builder.query<any, IReqListFood>(
+        getFoods: builder.query<IResListFoods, IReqListFood>(
             {
                 query: (body) => ({
-                    url: `foods/restaurants`,
+                    url: `foods`,
                     method: METHOD.Get,
                     params:body
                 }),
+                providesTags:['foods']
             }
         ),
-
+        getFoodsByRestaurantId: builder.query<any, {id:number}>(
+            {
+                query: ({id}) => ({
+                    url: `foods/restaurant/${id}`,
+                    method: METHOD.Get
+                }),
+                providesTags:['foods']
+            }
+        ),
     }),
 });
 
 export const {
-    useGetFoodsQuery
+    useGetFoodsQuery,
+    useGetFoodsByRestaurantIdQuery
 } = foodApi;
 
