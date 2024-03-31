@@ -6,35 +6,39 @@ import {pink} from "@mui/material/colors";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import "./index.css"
 import {useLogout} from "@/redux/api/hook/useLogout";
-const Navbar = () => {
-    return (
-      <div className={`px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 flex justify-between `} >
-          {/** logo **/}
-          <div className={`flex items-center space-x-4 `}>
-              <div className={`lg:mr-10 cursor-pointer flex items-center space-x-4`}>
-                  <li className={`logo font-semibold text-gray-300 text-2xl`}>Sila food</li>
-              </div>
-          </div>
-      {/** left side navbar  */}
-          <div className={`flex items-center space-x-2 lg:space-x-10 `}>
-              <div>
-                  <IconButton>
-                      <SearchIcon sx={{fontSize:'1.5rem'}}/>
-                  </IconButton>
-              </div>
+import {useRouter} from "next/navigation";
+import {Url} from "@/Constant/auth/ConstantAuthConfig";
 
-             <div onClick={useLogout}>
-                 <Avatar sx={{bgcolor:"white",color:pink.A400,fontWeight:600}}>MS</Avatar>
-             </div>
-              <div>
-                  <IconButton>
-                      <Badge  badgeContent={2} color="error">
-                          <ShoppingCartOutlinedIcon sx={{fontSize:'1.5rem'}}/>
-                      </Badge>
-                  </IconButton>
-              </div>
-          </div>
-      </div>
+const Navbar = () => {
+    const router = useRouter();
+    return (
+        <div className={`px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 flex justify-between `}>
+            {/** logo **/}
+            <div className={`flex items-center space-x-4 `} onClick={() => router.push(Url.home)}>
+                <div className={`lg:mr-10 cursor-pointer flex items-center space-x-4`}>
+                    <li className={`logo font-semibold text-gray-300 text-2xl`}>Sila food</li>
+                </div>
+            </div>
+            {/** left side navbar  */}
+            <div className={`flex items-center space-x-2 lg:space-x-10 `}>
+                <div>
+                    <IconButton>
+                        <SearchIcon sx={{fontSize: '1.5rem'}}/>
+                    </IconButton>
+                </div>
+
+                <div onClick={useLogout}>
+                    <Avatar sx={{bgcolor: "white", color: pink.A400, fontWeight: 600}}>MS</Avatar>
+                </div>
+                <div>
+                    <IconButton>
+                        <Badge badgeContent={2} color="error">
+                            <ShoppingCartOutlinedIcon sx={{fontSize: '1.5rem'}}/>
+                        </Badge>
+                    </IconButton>
+                </div>
+            </div>
+        </div>
     );
 };
 

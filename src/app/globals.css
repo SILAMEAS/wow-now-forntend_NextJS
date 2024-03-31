@@ -2,16 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* For webkit-based browsers (Chrome, Safari, etc.) */
-::-webkit-scrollbar {
-    width: 4px;
-    height: 5px;
-}
+/*!* For webkit-based browsers (Chrome, Safari, etc.) *!*/
+/*::-webkit-scrollbar {*/
+/*    height: 1px;*/
+/*    width: 1px;*/
+/*}*/
 
-::-webkit-scrollbar-thumb {
-    background-color: #E91E63;
-    border-radius: 20px;
-}
+/*::-webkit-scrollbar-thumb {*/
+/*    background-color: #E91E63;*/
+/*    border-radius: 10px;*/
+/*}*/
+
+
+/*.scrollFood {*/
+/*    ::-webkit-scrollbar {*/
+/*        height: 10px;*/
+/*    }*/
+
+/*    ::-webkit-scrollbar-thumb {*/
+/*        background-color: #E91E63;*/
+/*        border-radius: 10px;*/
+/*    }*/
+/*}*/
 
 /*!* For Firefox *!*/
 /*scrollbar-width: thin;*/

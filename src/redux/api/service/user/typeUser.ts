@@ -1,12 +1,13 @@
 import {EnumData} from "@/Constant/auth/ConstantAuthConfig";
 
-export interface IResLogin{
-    jwt:string,
-    role:string
+export interface IResLogin {
+    jwt: string,
+    role: string
 }
-export interface IReqLogin{
-    email:string;
-    password:string;
+
+export interface IReqLogin {
+    email: string;
+    password: string;
 }
 
 export interface IReqCreateAccount {
@@ -25,11 +26,11 @@ export interface IReqCreateAccount {
 
 
 export interface IResProfile {
-    id:         number;
-    fullName:   string;
-    email:      string;
-    password:   string;
-    role:       string;
+    id: number;
+    fullName: string;
+    email: string;
+    password: string;
+    role: EnumData;
     favourites: any[];
-    addresses:  any[];
+    addresses: any[];
 }

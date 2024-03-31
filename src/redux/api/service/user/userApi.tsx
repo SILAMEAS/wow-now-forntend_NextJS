@@ -2,7 +2,7 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {METHOD} from "@/redux/api/hook/method/Method";
 import {setCookie} from "cookies-next";
 import {keyAuthentication} from "@/Constant/auth/ConstantAuthConfig";
-import {IReqCreateAccount, IReqLogin, IResLogin, IResProfile} from "@/redux/api/service/user/typeUser";
+import {IReqCreateAccount, IReqLogin, IResLogin} from "@/redux/api/service/user/typeUser";
 
 export const userApi = createApi({
     reducerPath: "userApi",
@@ -18,12 +18,12 @@ export const userApi = createApi({
                     method: METHOD.Post,
                     body,
                     responseHandler: async response => {
-                        const res:IResLogin= await response.json();
-                        const {jwt,role}=res;
-                        const tokenAlive={ maxAge: 24 * 3600 }; // 1 day
+                        const res: IResLogin = await response.json();
+                        const {jwt, role} = res;
+                        const tokenAlive = {maxAge: 24 * 3600}; // 1 day
                         setCookie(keyAuthentication.logged, true, tokenAlive);
                         setCookie(keyAuthentication.token, jwt, tokenAlive);
-                        setCookie(keyAuthentication.role,role, tokenAlive);
+                        setCookie(keyAuthentication.role, role, tokenAlive);
                         window.location.reload();
                     },
                 }),
@@ -38,15 +38,7 @@ export const userApi = createApi({
                 }),
             }
         ),
-        profile: builder.query<IResProfile, any>(
-            {
-                query: (body) => ({
-                    url: `user/profile`,
-                    method: METHOD.Get,
-                    body
-                }),
-            }
-        ),
+
 
     }),
 });
@@ -54,5 +46,5 @@ export const userApi = createApi({
 export const {
     useLoginMutation,
     useRegisterMutation,
-    useProfileQuery
+    
 } = userApi;
