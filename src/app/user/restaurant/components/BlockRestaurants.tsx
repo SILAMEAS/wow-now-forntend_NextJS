@@ -23,7 +23,7 @@ const ListCardOfRestaurants = () => {
                     {
                         listRestaurants.isLoading || listRestaurants.isFetching ?
                             <CardLoading/> :
-                            listRestaurants.data!.contents.map(item =>
+                            listRestaurants.data?.contents.map(item =>
                                 <CardRestaurant data={item} key={item.id}/>
                             )
                     }

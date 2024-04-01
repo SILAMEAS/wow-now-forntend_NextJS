@@ -19,7 +19,7 @@ export const foodApi = createApi({
                 providesTags: ['foods']
             }
         ),
-        getFoodsByRestaurantId: builder.query<any, {
+        getFoodsByRestaurantId: builder.query<IResListFoods, {
             id: number,
             vegetarian: boolean,
             seasanal: boolean,

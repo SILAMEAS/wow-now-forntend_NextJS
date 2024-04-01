@@ -1,5 +1,6 @@
 import React from 'react';
 import {useGetFoodsByRestaurantIdQuery} from "@/redux/api/service/food/foodApi";
+import {Stack} from "@mui/material";
 import CardFood from "@/app/user/restaurant/[id]/components/CardFood";
 
 const FoodDetail = ({id, foodType, foodCategory}: { id: number, foodType: string, foodCategory: string }) => {
@@ -12,12 +13,17 @@ const FoodDetail = ({id, foodType, foodCategory}: { id: number, foodType: string
         skip: !id,
         refetchOnMountOrArgChange: true
     })
+    console.log("contents", getFoodsByRestaurantIdQuery.currentData?.contents)
     return (
-        <div className={'h-full overflow-y-scroll flex flex-col gap-1'}>
-            {
-                [1, 2, 3, 4, 5, 6, 7, 8, 89].map(item =>
-                    <CardFood key={item}/>)
-            }
+        <div className={'h-full overflow-y-scroll flex flex-col gap-1 bg-yellow-300'}>
+
+            <Stack height={'500px'} bgcolor={'green'}>
+                {
+                    getFoodsByRestaurantIdQuery.currentData?.contents.map(item =>
+                        <CardFood food={item} key={item.id}/>)
+                }
+            </Stack>
+
         </div>
     );
 };

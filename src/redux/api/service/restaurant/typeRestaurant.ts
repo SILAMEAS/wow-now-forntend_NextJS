@@ -1,4 +1,4 @@
-import {IReqListFood} from "@/redux/api/service/food/typeFood";
+import {IReqListFood, sortOrder} from "@/redux/api/service/food/typeFood";
 
 export interface IResListRestaurant {
     contents: IResRestaurant[];
@@ -35,7 +35,7 @@ export interface ICategory {
     value: string
 }
 
-export const defaultValuePagination = {pageNo: 1, pageSize: 10, sortBy: "", sortOrder: "asc"}
+export const defaultValuePagination = {pageNo: 1, pageSize: 10, sortBy: "", sortOrder: sortOrder.ASC}
 
 export interface IReqListRestaurant extends IReqListFood {
 }
