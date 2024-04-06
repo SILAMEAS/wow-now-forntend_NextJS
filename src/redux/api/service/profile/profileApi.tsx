@@ -23,7 +23,8 @@ export const profileApi = createApi({
 });
 
 export const {
-    useProfileQuery
+    useProfileQuery,
+    useLazyProfileQuery
 } = profileApi;
 
 
