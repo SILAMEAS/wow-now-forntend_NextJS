@@ -8,7 +8,6 @@ import {IResFood} from "@/redux/api/service/food/typeFood";
 
 export default function CardFood({food}: { food: IResFood }) {
     const theme = useTheme();
-    console.log("-----------------------food", food)
     return (
         <Card sx={{display: 'flex', minHeight: '120px'}}>
             <CardMedia

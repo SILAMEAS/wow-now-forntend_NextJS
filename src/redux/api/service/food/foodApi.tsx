@@ -23,7 +23,6 @@ export const foodApi = createApi({
             id: number,
             vegetarian: boolean,
             seasanal: boolean,
-            nonveg: boolean,
             food_category?: string
         }>(
             {

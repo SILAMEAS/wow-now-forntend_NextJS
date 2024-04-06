@@ -3,17 +3,22 @@ import {useGetFoodsByRestaurantIdQuery} from "@/redux/api/service/food/foodApi";
 import {Stack} from "@mui/material";
 import CardFood from "@/app/user/restaurant/[id]/components/CardFood";
 
-const FoodDetail = ({id, foodType, foodCategory}: { id: number, foodType: string, foodCategory: string }) => {
+const FoodDetail = ({id, foodType, foodCategory}: {
+    id: number,
+    foodType: string,
+    foodCategory: string
+}) => {
     const getFoodsByRestaurantIdQuery = useGetFoodsByRestaurantIdQuery({
         id,
-        nonveg: false,
-        seasanal: false,
-        vegetarian: false
+        seasanal: foodType === "seasanal",
+        vegetarian: foodType === "vegetarian",
     }, {
         skip: !id,
         refetchOnMountOrArgChange: true
     })
-    console.log("contents", getFoodsByRestaurantIdQuery.currentData?.contents)
+    console.log("foodType", foodType);
+    console.log("foodCategory", foodCategory);
+    // console.log("contents", getFoodsByRestaurantIdQuery.currentData?.contents)
     return (
         <div className={'h-full overflow-y-scroll flex flex-col gap-1 bg-yellow-300'}>
 

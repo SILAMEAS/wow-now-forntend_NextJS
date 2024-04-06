@@ -33,6 +33,14 @@ const nextConfig = {
     // when true, every image will be unoptimized
     unoptimized: false,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/middleware',
+        destination: '/middleware',
+      },
+    ]
+  },
 };
 
 module.exports = nextConfig;
