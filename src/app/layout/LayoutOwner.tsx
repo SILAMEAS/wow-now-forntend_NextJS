@@ -1,7 +1,7 @@
 import React, {PropsWithChildren} from "react";
-import RightSide from "@/app/owner/layout/RightSide";
+import RightSide from "@/app/layout/components/RightSide";
 
-export default function LayoutOwner({children}: PropsWithChildren) {
+export default function OwnerLayout({children}: PropsWithChildren) {
     return (
         <div className="h-screen overflow-hidden flex flex-col justify-between">
             {/*<Navigation />*/}

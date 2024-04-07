@@ -27,7 +27,7 @@ export const foodApi = createApi({
         }>(
             {
                 query: ({id, ...res}) => ({
-                    url: `foods/restaurant/${id}`,
+                    url: `foods/${id}`,
                     method: METHOD.Get,
                     params: {...res}
                 }),

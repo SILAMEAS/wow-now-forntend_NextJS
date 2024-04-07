@@ -4,29 +4,17 @@ import {usePathname} from "next/navigation";
 interface IRouteModify {
     icon?: ReactNode;
     label: string;
-    description?: string;
-    href?: string
+    href?: string;
+    onClick?: () => void;
 }
 
 
 const CustomRoute = ({
-                         icon = <svg
-                             xmlns="http://www.w3.org/2000/svg"
-                             fill="none"
-                             viewBox="0 0 24 24"
-                             strokeWidth="1.5"
-                             stroke="currentColor"
-                             className="w-6 h-6 group-hover:text-indigo-400"
-                         >
-                             <path
-                                 strokeLinecap="round"
-                                 strokeLinejoin="round"
-                                 d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-                             />
-                         </svg>, label, description, href
+                         icon, label, href, onClick
                      }: IRouteModify) => {
     const pathname = usePathname();
     return <a
+        onClick={onClick}
         href={href ?? '#'}
         className={`hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group ${pathname == href ? 'bg-indigo-400 hover:bg-indigo-400 ' : "bg-inherit"}`}
     >

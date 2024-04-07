@@ -17,7 +17,11 @@ export enum Url {
     home = "/",
     login = "/login",
     register = "/register",
-    forbidden = "/forbidden"
+    forbidden = "/forbidden",
+}
+
+export enum UrlChild {
+    userSearch = "/user/search",
 }
 
 export const RoleRelateToUrl: Array<{ id: EnumData; value: Url }> = [

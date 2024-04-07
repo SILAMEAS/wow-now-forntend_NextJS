@@ -5,9 +5,14 @@ import ItemCarousel from "@/components/tw-food/ItemCarousel";
 import {defaultValuePagination, IReqListRestaurant} from "@/redux/api/service/restaurant/typeRestaurant";
 import {useGetFoodsQuery} from "@/redux/api/service/food/foodApi";
 
-export const BlockFoods = () => {
+interface IBlockFoods {
+    search?: string;
+    setSearch?: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const BlockFoods = ({search}: IBlockFoods) => {
     const [filter, setFilter] = React.useState<IReqListRestaurant>(defaultValuePagination);
-    const listFoods = useGetFoodsQuery(filter, {refetchOnMountOrArgChange: true});
+    const listFoods = useGetFoodsQuery({...filter, search}, {refetchOnMountOrArgChange: true});
     return (
         <section>
             <div className={'flex  items-center space-x-10'}>
@@ -29,7 +34,7 @@ export const BlockFoods = () => {
 
                 <div className={'mt-6'}>
                     <div
-                        className={`flex ${Number(listFoods.data?.contents.length) === 10 ? 'w-screen' : "w-fit"}  overflow-y-scroll scrollFood`}>
+                        className={`flex ${Number(listFoods.data?.contents.length) === 10 ? 'w-screen' : "w-fit"}  overflow-y-auto scrollFood`}>
                         {listFoods.isLoading ?
                             <Skeleton animation="wave" variant="circular" width={200} height={200}/> :
                             listFoods?.data?.contents?.map(item =>

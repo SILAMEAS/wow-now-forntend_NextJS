@@ -22,6 +22,10 @@ export interface IReqListFood {
     sortBy: string;
     pageNo: number;
     sortOrder: sortOrder;
+    vegetarian?: boolean;
+    seasanal?: boolean;
+    filterBy?: string;
+    search?: string;
 }
 
 export enum sortOrder { ASC = "ASC", DESC = "DESC"}
