@@ -1,4 +1,4 @@
-import OwnerLayout from "@/app/layout/LayoutOwner";
+import OwnerLayout from "@/app/owner/layout/LayoutOwner";
 
 const withOwnerLayout = (WrappedComponent: any) => {
     // eslint-disable-next-line react/display-name

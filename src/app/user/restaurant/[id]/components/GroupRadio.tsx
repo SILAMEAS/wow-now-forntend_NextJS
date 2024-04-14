@@ -27,7 +27,7 @@ const GroupRadio = ({value, setValue, data, label}: IGroupRadio) => {
                     <FormControlLabel value={"empty"} control={<Radio/>} label={"All"}/>
                     {
                         data.map(item =>
-                            <FormControlLabel value={item.value} control={<Radio/>} label={item.name} key={item.id}/>
+                            <FormControlLabel value={item.id} control={<Radio/>} label={item.name} key={item.id}/>
                         )
                     }
                 </RadioGroup>

@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-import {ActivePageStaying, NormalPageStaying} from "@/components/tw-location-page-staying/ActivePageStaying";
+import {ActivePageStaying, NormalPageStaying} from "@/components/navigation/tw-location-page-staying/ActivePageStaying";
 
 const DefaultExample = () => {
     return <>

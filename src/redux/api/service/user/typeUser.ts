@@ -1,4 +1,5 @@
 import {EnumData} from "@/Constant/auth/ConstantAuthConfig";
+import {IResRestaurant} from "@/redux/api/service/restaurant/typeRestaurant";
 
 export interface IResLogin {
     jwt: string,
@@ -33,4 +34,5 @@ export interface IResProfile {
     role: EnumData;
     favourites: any[];
     addresses: any[];
+    myRestaurant?: IResRestaurant
 }

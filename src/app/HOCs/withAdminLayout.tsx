@@ -1,4 +1,4 @@
-import AdminLayout from "@/app/layout/AdminLayout";
+import AdminLayout from "@/app/admin/layout/AdminLayout";
 
 const withAdminLayout = (WrappedComponent: any) => {
     // eslint-disable-next-line react/display-name

@@ -2,8 +2,8 @@
 import React from 'react';
 import {IRequestParamFormUrl} from "@/utils/common/requestHeader";
 import {Divider, LinearProgress, Stack} from "@mui/material";
-import {LocationStayingPage} from "@/components/tw-location-page-staying/LocationStayingPage";
-import {ActivePageStaying, NormalPageStaying} from "@/components/tw-location-page-staying/ActivePageStaying";
+import {LocationStayingPage} from "@/components/navigation/tw-location-page-staying/LocationStayingPage";
+import {ActivePageStaying, NormalPageStaying} from "@/components/navigation/tw-location-page-staying/ActivePageStaying";
 import {SlideRestaurantDetail} from "@/app/user/restaurant/[id]/components/SlideRestaurant";
 import {
     useGetCategoryByRestaurantIdQuery,

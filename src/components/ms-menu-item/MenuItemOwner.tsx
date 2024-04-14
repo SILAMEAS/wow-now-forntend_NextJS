@@ -17,6 +17,9 @@ const MenuItemOwner = () => {
                          icon={<CategoryIcon className="w-6 h-6 group-hover:text-indigo-400"/>}/>
             <CustomRoute label={"Foods"} icon={<RamenDiningIcon className="w-6 h-6 group-hover:text-indigo-400"/>}
                          href={'/owner/food'}/>
+            <CustomRoute label={"Order"} href={'/owner/order'}
+                         icon={<CategoryIcon className="w-6 h-6 group-hover:text-indigo-400"/>}/>
+
             <CustomRoute label={"Logout"} icon={<LogoutIcon className="w-6 h-6 group-hover:text-indigo-400"/>}
                          onClick={$logout}
             />

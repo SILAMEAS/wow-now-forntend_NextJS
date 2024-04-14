@@ -11,10 +11,14 @@ export interface IResListFoods {
 export interface IResFood {
     id: number;
     name: string;
+    description: string;
     price: number;
     images: string[];
     restaurantId: number;
-    available: boolean
+    available: boolean;
+    vegetarin: boolean;
+    seasional: boolean;
+    categoryId: number
 }
 
 export interface IReqListFood {

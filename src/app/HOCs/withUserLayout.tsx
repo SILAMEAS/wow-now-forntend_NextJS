@@ -1,4 +1,4 @@
-import UserLayout from "@/app/layout/UserLayout";
+import UserLayout from "@/app/user/layout/UserLayout";
 
 const withUserLayout = (WrappedComponent: any): any => {
     // eslint-disable-next-line react/display-name

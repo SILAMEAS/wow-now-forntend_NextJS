@@ -40,8 +40,7 @@ export interface IAddress {
 
 export interface ICategory {
     name: string,
-    id: number,
-    value: string
+    id: number
 }
 
 export const defaultValuePagination = {pageNo: 1, pageSize: 10, sortBy: "", sortOrder: sortOrder.ASC}

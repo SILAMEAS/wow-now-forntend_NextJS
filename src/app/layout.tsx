@@ -7,9 +7,9 @@ import ReduxProvider from "@/redux/store/ReduxProvider";
 import {cookies} from "next/headers";
 import {EnumData, keyAuthentication} from "@/Constant/auth/ConstantAuthConfig";
 import {ReactNode} from "react";
-import OwnerLayout from "@/app/layout/LayoutOwner";
-import UserLayout from "@/app/layout/UserLayout";
-import AdminLayout from "@/app/layout/AdminLayout";
+import OwnerLayout from "@/app/owner/layout/LayoutOwner";
+import UserLayout from "@/app/user/layout/UserLayout";
+import AdminLayout from "@/app/admin/layout/AdminLayout";
 
 const inter = Inter({subsets: ["latin"]});
 
