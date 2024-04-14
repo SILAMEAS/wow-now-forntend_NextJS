@@ -20,9 +20,9 @@ const FoodDetail = ({id, foodType, foodCategory}: {
     console.log("foodCategory", foodCategory);
     // console.log("contents", getFoodsByRestaurantIdQuery.currentData?.contents)
     return (
-        <div className={'h-full overflow-y-scroll flex flex-col gap-1 bg-yellow-300'}>
+        <div className={'h-full  flex flex-col gap-1 '}>
 
-            <Stack height={'500px'} bgcolor={'green'}>
+            <Stack height={'500px'}>
                 {
                     getFoodsByRestaurantIdQuery.currentData?.contents.map(item =>
                         <CardFood food={item} key={item.id}/>)

@@ -12,12 +12,21 @@ export interface IResListRestaurant {
 
 export interface IResRestaurant {
     id: number;
+    cuisineType: string,
     name: string;
     description: string;
     images: string[];
     openingHours: string;
     open: boolean;
-    address: IAddress
+    address: IAddress;
+    contactInformation: IContactInformation;
+}
+
+export interface IContactInformation {
+    email: string;
+    phone: string;
+    twitter: string;
+    instagram: string;
 }
 
 export interface IAddress {

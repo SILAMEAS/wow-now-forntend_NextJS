@@ -21,10 +21,10 @@ export const userApi = createApi({
                         const res: IResLogin = await response.json();
                         const {jwt, role} = res;
                         const tokenAlive = {maxAge: 24 * 3600}; // 1 day
-                        setCookie(keyAuthentication.logged, true, tokenAlive);
+                        role && jwt && setCookie(keyAuthentication.logged, true, tokenAlive);
                         setCookie(keyAuthentication.token, jwt, tokenAlive);
                         setCookie(keyAuthentication.role, role, tokenAlive);
-                        window.location.reload();
+                        role && jwt && window.location.reload();
                     },
                 }),
             }
@@ -46,5 +46,5 @@ export const userApi = createApi({
 export const {
     useLoginMutation,
     useRegisterMutation,
-    
+
 } = userApi;

@@ -52,6 +52,26 @@ export const restaurantApi = createApi({
                 providesTags: ['restaurantById']
             }
         ),
+        ownerRestaurant: builder.query<IResRestaurant, any>(
+            {
+                query: (body) => ({
+                    url: `admin/restaurants/user`,
+                    method: METHOD.Get,
+                    params: body
+                }),
+                providesTags: ['restaurant']
+            }
+        ),
+        updateOwnerRestaurant: builder.mutation<IResRestaurant, { body: IResRestaurant, resId: string | number }>(
+            {
+                query: ({body, resId}) => ({
+                    url: `admin/restaurants/${resId}`,
+                    method: METHOD.Put,
+                    body
+                }),
+                invalidatesTags: ['restaurant']
+            }
+        ),
 
     }),
 });
@@ -60,6 +80,8 @@ export const {
     useGetRestaurantsQuery,
     useAddRestaurantFavMutation,
     useGetRestaurantByIdQuery,
-    useGetCategoryByRestaurantIdQuery
+    useGetCategoryByRestaurantIdQuery,
+    useOwnerRestaurantQuery,
+    useUpdateOwnerRestaurantMutation
 } = restaurantApi;
 

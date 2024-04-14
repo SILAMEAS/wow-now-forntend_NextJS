@@ -2,6 +2,7 @@
 import {SubmitHandler, useForm} from "react-hook-form";
 import React from "react";
 import {useLoginMutation} from "@/redux/api/service/user/userApi";
+import {Alert} from "@mui/material";
 
 type Inputs = {
     email: string;
@@ -18,6 +19,25 @@ const LoginPage = () => {
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         await login(data).unwrap();
     };
+    const handleErrorMessage = () => {
+        if ((resultLogin.error as { status: string | number })?.status) {
+            switch ((resultLogin.error as { status: string | number }).status) {
+                case 'FETCH_ERROR': {
+                    return <Alert
+                        severity="error">Server Down</Alert>
+                }
+                case '404' :
+                case 404: {
+                    return <Alert
+                        severity="error">User not found</Alert>
+                }
+                default: {
+                    return <Alert
+                        severity="error">{(resultLogin.error as { message: string | number })?.message ?? ""}</Alert>
+                }
+            }
+        }
+    }
     return <div className="bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
         <a href="#">
             <div className="text-foreground font-semibold text-2xl tracking-tighter mx-auto flex items-center gap-2">
@@ -144,6 +164,7 @@ const LoginPage = () => {
                                 }
                             </button>
                         </div>
+                        {handleErrorMessage()}
                     </form>
                 </div>
             </div>

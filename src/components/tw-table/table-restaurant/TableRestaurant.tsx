@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TableRestaurant = () => {
+
     return (
         <table className="border-separate border border-slate-500 w-full">
             <thead>
