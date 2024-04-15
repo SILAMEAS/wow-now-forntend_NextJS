@@ -2,6 +2,7 @@ import {createApi} from "@reduxjs/toolkit/query/react";
 import {METHOD} from "@/redux/api/hook/method/Method";
 import {
     ICategory,
+    ICreateCategory,
     IReqListRestaurant,
     IResListRestaurant,
     IResRestaurant
@@ -43,13 +44,42 @@ export const restaurantApi = createApi({
                 providesTags: ['restaurantById']
             }
         ),
+        ownerCreateCategory: builder.mutation<Array<ICategory>, ICreateCategory>(
+            {
+                query: (body) => ({
+                    url: `/admin/categories`,
+                    method: METHOD.Post,
+                    body
+                }),
+                invalidatesTags: ['category']
+            }
+        ),
+        ownerUpdateCategory: builder.mutation<ICategory, { name: string, id: number | string }>(
+            {
+                query: ({name, id}) => ({
+                    url: `/admin/categories/${id}`,
+                    method: METHOD.Put,
+                    body: {name}
+                }),
+                invalidatesTags: ['category']
+            }
+        ),
+        ownerDeleteCategory: builder.mutation<ICategory, { id: number | string }>(
+            {
+                query: ({id}) => ({
+                    url: `/admin/categories/${id}`,
+                    method: METHOD.Delete
+                }),
+                invalidatesTags: ['category']
+            }
+        ),
         getCategoryByRestaurantId: builder.query<Array<ICategory>, { id: number }>(
             {
                 query: ({id}) => ({
                     url: `categories/restaurant/${id}`,
                     method: METHOD.Get
                 }),
-                providesTags: ['restaurantById']
+                providesTags: ['category']
             }
         ),
         ownerRestaurant: builder.query<IResRestaurant, any>(
@@ -82,6 +112,10 @@ export const {
     useGetRestaurantByIdQuery,
     useGetCategoryByRestaurantIdQuery,
     useOwnerRestaurantQuery,
-    useUpdateOwnerRestaurantMutation
+    useUpdateOwnerRestaurantMutation,
+    useOwnerCreateCategoryMutation,
+    useOwnerUpdateCategoryMutation,
+    useOwnerDeleteCategoryMutation
+
 } = restaurantApi;
 

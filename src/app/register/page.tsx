@@ -3,40 +3,66 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {EnumData} from "@/Constant/auth/ConstantAuthConfig";
 import {useRegisterMutation} from "@/redux/api/service/user/userApi";
 import {IReqCreateAccount} from "@/redux/api/service/user/typeUser";
+import React from "react";
+import {store} from "@/redux/store/store";
+import {reset} from "@/redux/slice/authSlice";
 
 export type ICreateAccount = {
-    firstName:string;
-    LastName:string;
+    firstName: string;
+    LastName: string;
     email: string;
     password: string;
     confirmPassword: string;
-    streetAddress:string;
-    city:string;
-    stateProvince:string;
-    postalCode:string;
-    country:string;
-    role:EnumData;
+    streetAddress: string;
+    city: string;
+    stateProvince: string;
+    postalCode: string;
+    country: string;
+    role: EnumData;
 };
 const Register = () => {
     const {
         register,
         handleSubmit,
         watch,
-        formState: { errors },
+        formState: {errors},
     } = useForm<ICreateAccount>();
-    const passMatchCon=watch("password")===watch("confirmPassword");
-    const [registerAcc]=useRegisterMutation();
+    const passMatchCon = watch("password") === watch("confirmPassword");
+    const [registerAcc] = useRegisterMutation();
     const onSubmit: SubmitHandler<ICreateAccount> = async (data) => {
-        const {email,password,confirmPassword,country,city,role,stateProvince,postalCode,firstName,LastName,streetAddress}=data;
-        const dataDto:IReqCreateAccount={fullName:firstName+" "+LastName,address:{streetAddress,city,country,postalCode,stateProvince},password,email,role};
+        const {
+            email,
+            password,
+            confirmPassword,
+            country,
+            city,
+            role,
+            stateProvince,
+            postalCode,
+            firstName,
+            LastName,
+            streetAddress
+        } = data;
+        const dataDto: IReqCreateAccount = {
+            fullName: firstName + " " + LastName,
+            address: {streetAddress, city, country, postalCode, stateProvince},
+            password,
+            email,
+            role
+        };
         await registerAcc(dataDto).unwrap();
-    };
+    }
+    React.useEffect(() => {
+        store.dispatch(reset());
+    }, [])
     return (
         <>
             {/* component */}
-            <div className="bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
+            <div
+                className="bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
                 <a href="#">
-                    <div className="text-foreground font-semibold text-2xl tracking-tighter mx-auto flex items-center gap-2">
+                    <div
+                        className="text-foreground font-semibold text-2xl tracking-tighter mx-auto flex items-center gap-2">
                         <div>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +79,7 @@ const Register = () => {
                                 />
                             </svg>
                         </div>
-                        Create  Account
+                        Create Account
                     </div>
                 </a>
                 <div className="relative mt-12 w-full max-w-lg sm:mt-10">
@@ -61,7 +87,8 @@ const Register = () => {
                         className="relative -mb-px h-px w-full bg-gradient-to-r from-transparent via-sky-300 to-transparent"
                         // bis_skin_checked={1}
                     />
-                    <div className="mx-5 border dark:border-b-white/50 dark:border-t-white/50 border-b-white/20 sm:border-t-white/20 shadow-[20px_0_20px_20px] shadow-slate-500/10 dark:shadow-white/20 rounded-lg border-white/20 border-l-white/20 border-r-white/20 sm:shadow-sm lg:rounded-xl lg:shadow-none">
+                    <div
+                        className="mx-5 border dark:border-b-white/50 dark:border-t-white/50 border-b-white/20 sm:border-t-white/20 shadow-[20px_0_20px_20px] shadow-slate-500/10 dark:shadow-white/20 rounded-lg border-white/20 border-l-white/20 border-r-white/20 sm:shadow-sm lg:rounded-xl lg:shadow-none">
                         <div className="flex flex-col p-6">
                             <h3 className="text-xl font-semibold leading-6 tracking-tighter">
 
@@ -76,9 +103,11 @@ const Register = () => {
                                 <div>
                                     <div className="flex flex-row space-x-3">
                                         {/* First Name*/}
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     First Name
                                                 </label>
                                                 <div className="absolute right-3 translate-y-2 text-green-200">
@@ -102,9 +131,11 @@ const Register = () => {
                                             />
                                         </div>
                                         {/* Last Name*/}
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     Last Name
                                                 </label>
                                                 <div className="absolute right-3 translate-y-2 text-green-200">
@@ -132,9 +163,11 @@ const Register = () => {
                                 {/** Email */}
                                 <div className="mt-4">
                                     <div>
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     Email
                                                 </label>
                                             </div>
@@ -151,9 +184,11 @@ const Register = () => {
                                 {/** Password */}
                                 <div className="mt-4">
                                     <div>
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     Password
                                                 </label>
                                             </div>
@@ -170,9 +205,11 @@ const Register = () => {
                                 {/** Confirm Password */}
                                 <div className="mt-4">
                                     <div>
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     Confirm Password
                                                 </label>
                                             </div>
@@ -194,9 +231,11 @@ const Register = () => {
                                 {/** Address */}
                                 <div className="mt-4">
                                     <div>
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     Address
                                                 </label>
                                             </div>
@@ -213,9 +252,11 @@ const Register = () => {
                                 <div className="mt-4 flex flex-col gap-3">
                                     <div className='flex flex-row space-x-3'>
                                         {/** stateProvince */}
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     State Province
                                                 </label>
                                             </div>
@@ -228,9 +269,11 @@ const Register = () => {
                                             </div>
                                         </div>
                                         {/** city */}
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     City
                                                 </label>
                                             </div>
@@ -245,9 +288,11 @@ const Register = () => {
                                     </div>
                                     <div className='flex flex-row space-x-3'>
                                         {/** postalCode */}
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     Postal Code
                                                 </label>
                                             </div>
@@ -260,9 +305,11 @@ const Register = () => {
                                             </div>
                                         </div>
                                         {/** country */}
-                                        <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                                        <div
+                                            className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                                             <div className="flex justify-between">
-                                                <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                                                <label
+                                                    className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
                                                     Country
                                                 </label>
                                             </div>

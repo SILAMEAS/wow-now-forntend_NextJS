@@ -1,7 +1,23 @@
+"use client"
 import React, {PropsWithChildren} from "react";
 import RightSide from "@/app/owner/layout/RightSide";
+import {useProfileQuery} from "@/redux/api/service/profile/profileApi";
+import {useAppDispatch} from "@/redux/api/hook/hoots";
+import {setProfile, setRestaurant} from "@/redux/slice/authSlice";
+import {useOwnerRestaurantQuery} from "@/redux/api/service/restaurant/restaurantApi";
+import {store} from "@/redux/store/store";
+import {EnumData} from "@/Constant/auth/ConstantAuthConfig";
 
 export default function OwnerLayout({children}: PropsWithChildren) {
+    const getProfile = useProfileQuery({});
+    const ownerRestaurant = useOwnerRestaurantQuery({}, {skip: store.getState().authReducer.profile?.role !== EnumData.ROLE_RESTAURANT_OWNER});
+    const dispatch = useAppDispatch();
+    if (getProfile.currentData) {
+        dispatch(setProfile(getProfile.currentData));
+        if (ownerRestaurant.currentData) {
+            dispatch(setRestaurant(ownerRestaurant.currentData));
+        }
+    }
     return (
         <div className="h-screen overflow-hidden flex flex-col justify-between">
             {/*<Navigation />*/}

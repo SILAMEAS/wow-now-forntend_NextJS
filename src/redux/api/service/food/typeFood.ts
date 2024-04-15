@@ -13,7 +13,7 @@ export interface IResFood {
     name: string;
     description: string;
     price: number;
-    images: string[];
+    images: any;
     restaurantId: number;
     available: boolean;
     vegetarin: boolean;
@@ -30,6 +30,9 @@ export interface IReqListFood {
     seasanal?: boolean;
     filterBy?: string;
     search?: string;
+}
+
+export interface IReqCreateFood extends IResFood {
 }
 
 export enum sortOrder { ASC = "ASC", DESC = "DESC"}

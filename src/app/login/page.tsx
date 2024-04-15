@@ -3,6 +3,8 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import React from "react";
 import {useLoginMutation} from "@/redux/api/service/user/userApi";
 import {Alert} from "@mui/material";
+import {reset} from "@/redux/slice/authSlice";
+import {store} from "@/redux/store/store";
 
 type Inputs = {
     email: string;
@@ -14,7 +16,7 @@ const LoginPage = () => {
         handleSubmit,
         watch,
         formState: {errors},
-    } = useForm<Inputs>();
+    } = useForm<Inputs>()
     const [login, resultLogin] = useLoginMutation();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         await login(data).unwrap();
@@ -38,6 +40,9 @@ const LoginPage = () => {
             }
         }
     }
+    React.useEffect(() => {
+        store.dispatch(reset());
+    }, [])
     return <div className="bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
         <a href="#">
             <div className="text-foreground font-semibold text-2xl tracking-tighter mx-auto flex items-center gap-2">

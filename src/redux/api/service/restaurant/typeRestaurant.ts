@@ -43,6 +43,10 @@ export interface ICategory {
     id: number
 }
 
+export interface ICreateCategory {
+    name: string
+}
+
 export const defaultValuePagination = {pageNo: 1, pageSize: 10, sortBy: "", sortOrder: sortOrder.ASC}
 
 export interface IReqListRestaurant extends IReqListFood {

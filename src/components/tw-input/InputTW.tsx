@@ -1,7 +1,7 @@
 import React, {DetailedHTMLProps, InputHTMLAttributes} from 'react';
 import {FieldErrors, FieldValues, Path, UseFormRegister} from "react-hook-form";
 
-interface TypeInput<T extends FieldValues> {
+export interface TypeInput<T extends FieldValues> {
     register: UseFormRegister<T>,
     id: Path<T>,
     label?: string
@@ -31,7 +31,7 @@ export function InputTW<T extends FieldValues>(props: TypeInput<T>) {
             <input
                 {...register(id, {required: required ?? true,})}
                 {...InputElement}
-                className={`block w-full bg-transparent p-3 text-sm file:my-1 file:rounded-full file:border-0 file:bg-accent file:px-4 file:py-2 file:font-medium placeholder:text-muted-foreground/90 focus:outline-none focus:ring-0 sm:leading-7 text-foreground border-2 px-5 rounded-lg ${className}`}
+                className={`block w-full bg-transparent py-1 text-sm file:my-1 file:rounded-full file:border-0 file:bg-accent file:px-4 file:py-2 file:font-medium placeholder:text-muted-foreground/90 focus:outline-none focus:ring-0 sm:leading-7 text-foreground border-2 px-5 rounded-lg ${className}`}
             />
             {errors[id] && errors[id]?.type === "required" && (
                 <span className={`text-red-700`}>This is required</span>

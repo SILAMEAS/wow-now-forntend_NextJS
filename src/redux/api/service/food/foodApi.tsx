@@ -1,6 +1,6 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
 import {METHOD} from "@/redux/api/hook/method/Method";
-import {IReqListFood, IResListFoods} from "@/redux/api/service/food/typeFood";
+import {IReqCreateFood, IReqListFood, IResListFoods} from "@/redux/api/service/food/typeFood";
 import {fetchBaseQueryCustom} from "@/redux/api/hook/method/header/baseQueryCustom";
 
 export const foodApi = createApi({
@@ -9,6 +9,26 @@ export const foodApi = createApi({
     tagTypes: ['foods'],
     baseQuery: fetchBaseQueryCustom,
     endpoints: (builder) => ({
+        createFood: builder.mutation<IResListFoods, IReqCreateFood>(
+            {
+                query: (body) => ({
+                    url: `admin/foods`,
+                    method: METHOD.Post,
+                    body
+                }),
+                invalidatesTags: ['foods']
+            }
+        ),
+        updateFood: builder.mutation<IResListFoods, IReqCreateFood>(
+            {
+                query: ({id, ...body}) => ({
+                    url: `admin/foods/${id}`,
+                    method: METHOD.Put,
+                    body
+                }),
+                invalidatesTags: ['foods']
+            }
+        ),
         getFoods: builder.query<IResListFoods, IReqListFood>(
             {
                 query: (body) => ({
@@ -19,15 +39,10 @@ export const foodApi = createApi({
                 providesTags: ['foods']
             }
         ),
-        getFoodsByRestaurantId: builder.query<IResListFoods, {
-            id: number,
-            vegetarian: boolean,
-            seasanal: boolean,
-            food_category?: string
-        }>(
+        getFoodsByRestaurantId: builder.query<IResListFoods, IReqListFood & { id: number }>(
             {
                 query: ({id, ...res}) => ({
-                    url: `foods/${id}`,
+                    url: `foods/restaurant/${id}`,
                     method: METHOD.Get,
                     params: {...res}
                 }),
@@ -39,6 +54,8 @@ export const foodApi = createApi({
 
 export const {
     useGetFoodsQuery,
-    useGetFoodsByRestaurantIdQuery
+    useGetFoodsByRestaurantIdQuery,
+    useCreateFoodMutation,
+    useUpdateFoodMutation
 } = foodApi;
 

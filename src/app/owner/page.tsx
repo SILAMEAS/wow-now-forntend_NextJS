@@ -1,16 +1,17 @@
 "use client";
 import React from "react";
-import {useOwnerRestaurantQuery, useUpdateOwnerRestaurantMutation} from "@/redux/api/service/restaurant/restaurantApi";
+import {useUpdateOwnerRestaurantMutation} from "@/redux/api/service/restaurant/restaurantApi";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {IResRestaurant} from "@/redux/api/service/restaurant/typeRestaurant";
 import BackDropLoading from "@/components/mui-backdrop/BackDropLoading";
 import {ButtonSubmit, InputTW} from "@/components/tw-input/InputTW";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import {IOSSwitch} from "@/components/ms-switch/SwitchMui";
+import {useAppSelector} from "@/redux/api/hook/hoots";
 
 const Ownerpage = () => {
-    const ownerRestaurant = useOwnerRestaurantQuery({});
-    const [updateRestaurant, resultUpdateRestaurant] = useUpdateOwnerRestaurantMutation({})
+    const [updateRestaurant, resultUpdateRestaurant] = useUpdateOwnerRestaurantMutation({});
+    const {restaurant} = useAppSelector(state => state.authReducer)
     const {
         register,
         handleSubmit,
@@ -19,8 +20,8 @@ const Ownerpage = () => {
         setValue,
     } = useForm<IResRestaurant>();
     const onSubmit: SubmitHandler<IResRestaurant> = async (data) => {
-        ownerRestaurant.currentData?.id &&
-        await updateRestaurant({body: data, resId: ownerRestaurant.currentData.id})
+        restaurant?.id &&
+        await updateRestaurant({body: data, resId: restaurant?.id})
     };
     const prepareData = (data: IResRestaurant) => {
         const {
@@ -48,9 +49,9 @@ const Ownerpage = () => {
         setValue('images', images)
     }
     React.useEffect(() => {
-        ownerRestaurant.currentData && prepareData(ownerRestaurant.currentData)
-    }, [ownerRestaurant.currentData])
-    if (ownerRestaurant.isLoading) {
+        restaurant && prepareData(restaurant)
+    }, [restaurant])
+    if (!restaurant) {
         return <BackDropLoading open={true}/>
     }
     return (
