@@ -1,3 +1,5 @@
+import {Order} from "@/redux/api/service/restaurant/typeRestaurant";
+
 export interface IResListFoods {
     contents: IResFood[];
     page: number;
@@ -25,11 +27,12 @@ export interface IReqListFood {
     pageSize: number;
     sortBy: string;
     pageNo: number;
-    sortOrder: sortOrder;
+    sortOrder: Order;
     vegetarian?: boolean;
     seasanal?: boolean;
     filterBy?: string;
     search?: string;
+
 }
 
 export interface IReqCreateFood extends IResFood {

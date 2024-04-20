@@ -1,4 +1,5 @@
-import {IReqListFood, sortOrder} from "@/redux/api/service/food/typeFood";
+import {IReqListFood} from "@/redux/api/service/food/typeFood";
+import {IFilterTableCustom} from "@/components/ms-custom-table/custom/hook/useTableCustom";
 
 export interface IResListRestaurant {
     contents: IResRestaurant[];
@@ -47,7 +48,17 @@ export interface ICreateCategory {
     name: string
 }
 
-export const defaultValuePagination = {pageNo: 1, pageSize: 10, sortBy: "", sortOrder: sortOrder.ASC}
+export type Sort = 'asc' | 'desc';
+
+export type Order = 'asc' | 'desc';
+export const Ascending: Sort = 'asc';
+export const Descending: Sort = 'desc';
+export const defaultValuePagination: IFilterTableCustom = {
+    pageNo: 1,
+    pageSize: 10,
+    sortBy: "id",
+    sortOrder: Ascending,
+}
 
 export interface IReqListRestaurant extends IReqListFood {
 }

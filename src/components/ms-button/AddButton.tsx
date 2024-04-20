@@ -4,7 +4,7 @@ const AddButton = ({onClick}: { onClick?: React.MouseEventHandler<HTMLButtonElem
     return (
         <button
             onClick={onClick}
-            className={`absolute bg-pink-700 w-[50px] h-[50px] rounded-3xl text-3xl bottom-0 right-0`}>{`+`}</button>
+            className={`fixed bg-pink-700 w-[50px] h-[50px] rounded-3xl text-3xl top-2 right-2`}>{`+`}</button>
     );
 };
 
