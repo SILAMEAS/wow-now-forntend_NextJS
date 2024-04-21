@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
-import { CSSProperties } from "react";
+import React, {CSSProperties} from "react";
+import Image from "next/image";
+import clsx from "clsx";
 
 export const MSProductImage = styled.img`
   width: 100%;
@@ -23,3 +25,35 @@ export const MSProductImageModify = ({
     />
   );
 };
+export const ImageCustom=({image}:{ image: string;})=>{
+    // const {
+    //     attributes,
+    //     listeners,
+    //     setNodeRef,
+    //     transform,
+    //     transition,
+    //     isDragging,
+    // } = useSortable({
+    //     id: id,
+    //     data: {
+    //         type: "item",
+    //     },
+    // });
+    return  <Image
+        style={{
+            // transform: CSS.Translate.toString(transform),
+        }}
+        // ref={setNodeRef}
+        // {...attributes}
+        // {...listeners}
+        src={image}
+        width={200}
+        height={200}
+        priority
+        alt=""
+        className={clsx(
+            "border object-cover hover:cursor-grab h-full w-full",
+            // isDragging && "opacity-50"
+        )}
+    />
+}

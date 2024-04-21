@@ -10,6 +10,10 @@ import {ReactNode} from "react";
 import OwnerLayout from "@/app/owner/layout/LayoutOwner";
 import UserLayout from "@/app/user/layout/UserLayout";
 import AdminLayout from "@/app/admin/layout/AdminLayout";
+import "@uploadthing/react/styles.css";
+import {NextSSRPlugin} from "@uploadthing/react/next-ssr-plugin";
+import {extractRouterConfig} from "uploadthing/server";
+import {ourFileRouter} from "@/app/app/api/uploadthing/core";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -43,6 +47,15 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body>
+        <NextSSRPlugin
+            /**
+             * The `extractRouterConfig` will extract **only** the route configs
+             * from the router to prevent additional information from being
+             * leaked to the client. The data passed to the client is the same
+             * as if you were to fetch `/api/uploadthing` directly.
+             */
+            routerConfig={extractRouterConfig(ourFileRouter)}
+        />
         <ThemeProvider theme={darkThemeCustom}>
             <CssBaseline/>
             <ReduxProvider>
