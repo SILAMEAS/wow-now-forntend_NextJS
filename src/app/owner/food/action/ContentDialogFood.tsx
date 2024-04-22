@@ -9,8 +9,7 @@ import TWSelect from "@/components/tw-selected/TWSelect";
 import {useCreateFoodMutation, useUpdateFoodMutation} from "@/redux/api/service/food/foodApi";
 import {useAppSelector} from "@/redux/api/hook/hoots";
 import BackDropLoading from "@/components/mui-backdrop/BackDropLoading";
-import CardMedia from "@mui/material/CardMedia";
-import CustomUploadThing from "@/components/custom-uploading/custom-upload-thing";
+import InputUploadThing from "@/components/custom-uploading/CustomUploadthing";
 
 interface IContentDialogFood {
     foodSelected: IResFood | null
@@ -33,16 +32,15 @@ const ContentDialogFood = (props: IContentDialogFood) => {
     const [updateFood, resultUpdateFood] = useUpdateFoodMutation();
     const [fileAlreadyUpload, setFileAlreadyUpload] = useState<Array<File>|[]>([]);
     // const [updateCategory, resultUpdateCategory] = useOwnerUpdateCategoryMutation()
-    console.log("error",errors)
     const onSubmit: SubmitHandler<IResFood> = async (data) => {
+        console.log("data.images",data.images);
         if (restaurant?.id) {
             isCreate ? await createFood({
                 ...data,
-                images: fileAlreadyUpload,
+                images: [data.images],
                 restaurantId: restaurant.id
             }).unwrap() : foodSelected?.id && await updateFood({
                 ...data,
-                images:fileAlreadyUpload,
                 restaurantId: restaurant.id,
                 id: foodSelected?.id
             }).unwrap()
@@ -58,39 +56,28 @@ const ContentDialogFood = (props: IContentDialogFood) => {
                 categoryId,
                 price,
                 available,
-                seasional,
-                vegetarin,
+                seasonal,
+                vegetarian,
                 restaurantId
             } = foodSelected;
+            console.log("foodSelected",foodSelected);
             setValue('name', name);
             setValue('description', description);
             setValue('images', images);
-            setFileAlreadyUpload(images);
             setValue('categoryId', categoryId);
             setValue('price', price);
             setValue('available', available);
-            setValue('seasional', seasional);
-            setValue('vegetarin', vegetarin);
+            setValue('seasonal', seasonal);
+            setValue('vegetarian', vegetarian);
             setValue('restaurantId', restaurantId);
         }
-    }, [foodSelected])
-    console.log("fileAlreadyUpload",fileAlreadyUpload);
-    React.useMemo(()=>{
-        setValue('images', fileAlreadyUpload)
-    },[fileAlreadyUpload])
+    }, [foodSelected]);
     return (
         <Stack>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={`grid grid-cols-2 gap-4`}>
-                    <div className={''}>
-                        <CardMedia
-                            component="img"
-                            sx={{width: '100px', height: "100px", borderRadius: '50%'}}
-                            image={watch('images')?watch('images')[0]:""}
-                            alt="Live from space album cover"
-                        />
-                    </div>
-                    <CustomUploadThing buttonName={'upload'} setFileAlreadyUpload={ setFileAlreadyUpload}/>
+
+                    <InputUploadThing<IResFood> buttonName={'change image'} register={register} setValue={setValue} watch={watch} id={'images'}/>
                     <InputTW<IResFood> register={register} id={'name'} errors={errors} label={"Name"}/>
                     <InputTW<IResFood> register={register} id={'description'} errors={errors} label={"Description"}/>
                     <InputTW<IResFood> register={register} id={'price'} errors={errors} label={"Price"}/>
@@ -99,17 +86,17 @@ const ContentDialogFood = (props: IContentDialogFood) => {
                     {/*<InputTW<IResFood> register={register} id={'images'} errors={errors} label={"images"}/>*/}
                     <div className={` flex items-end`}>
                         <FormControlLabel
-                            checked={Boolean(watch('vegetarin'))}
+                            checked={Boolean(watch('vegetarian'))}
                             control={<IOSSwitch sx={{m: 1}} defaultChecked/>}
-                            onClick={(e) => setValue('vegetarin', !watch('vegetarin'))}
+                            onClick={(e) => setValue('vegetarian', !watch('vegetarian'))}
                             label={"vegetarin"}
                         />
                     </div>
                     <div className={` flex items-end`}>
                         <FormControlLabel
-                            checked={Boolean(watch('seasional'))}
+                            checked={Boolean(watch('seasonal'))}
                             control={<IOSSwitch sx={{m: 1}} defaultChecked/>}
-                            onClick={(e) => setValue('seasional', !watch('seasional'))}
+                            onClick={(e) => setValue('seasonal', !watch('seasonal'))}
                             label={"seasional"}
                         />
                     </div>

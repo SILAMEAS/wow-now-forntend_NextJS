@@ -9,8 +9,6 @@ function TWSelect<T extends FieldValues>(props: TypeInput<T>) {
 
     const {restaurant} = useAppSelector(state => state.authReducer)
     const getCategoryByResId = useGetCategoryByRestaurantIdQuery({id: restaurant?.id ?? 0}, {skip: !restaurant?.id});
-    console.log("getCategoryByResId", getCategoryByResId);
-
     return (
         <div className="w-full mx-auto">
             <label>{label ?? id}</label>

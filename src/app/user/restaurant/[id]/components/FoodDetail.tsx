@@ -20,8 +20,7 @@ const FoodDetail = ({id, foodType, food_category}: {
             skip: !id,
             refetchOnMountOrArgChange: true
         })
-    // console.log("contents", getFoodsByRestaurantIdQuery.currentData?.contents)
-    return (
+      return (
         <div className={'h-full  flex flex-col gap-1 '}>
 
             <Stack height={'500px'}>

@@ -43,6 +43,9 @@ const ExampleUsageTableCustom = <O extends TestData>({handleViewDetailPage}: IFo
                 categoryId: item.categoryId,
                 available: item.available,
                 description: item.description,
+                restaurantId:item.restaurantId,
+                vegetarian:item.vegetarian,
+                seasonal:item.seasonal,
                 action: 0,
             } as O));
 

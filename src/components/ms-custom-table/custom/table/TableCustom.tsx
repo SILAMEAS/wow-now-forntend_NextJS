@@ -1,4 +1,5 @@
 import {
+    Button,
     SelectChangeEvent,
     Skeleton,
     Stack,
@@ -19,7 +20,6 @@ import {TablePaginateReBuild} from "@/components/ms-table-pagination-rebuild/Tab
 import NGText from "@/components/mui-text/MSText";
 import {FigmaBody} from "@/Constant/figma/FigmaBody";
 import {Ascending, Descending} from "@/redux/api/service/restaurant/typeRestaurant";
-
 
 export interface IDataRow {
     id: number;
@@ -161,7 +161,12 @@ export function TableCustom<
                     />
                 </Stack>
             )}
-            <p className={`border-double border-2 py-2 text-center sticky`}>Total : {currentData?.total ?? 0}</p>
+            {
+                isLoading&&
+                <Button color="primary" >
+                    Loading ...
+                </Button>
+            }
 
         </TableContainer>
     );

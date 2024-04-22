@@ -57,7 +57,7 @@ export const defaultValuePagination: IFilterTableCustom = {
     pageNo: 1,
     pageSize: 10,
     sortBy: "id",
-    sortOrder: Ascending,
+    sortOrder: Descending,
 }
 
 export interface IReqListRestaurant extends IReqListFood {

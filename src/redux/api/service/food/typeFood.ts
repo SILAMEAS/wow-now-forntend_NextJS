@@ -18,8 +18,8 @@ export interface IResFood {
     images: any;
     restaurantId: number;
     available: boolean;
-    vegetarin: boolean;
-    seasional: boolean;
+    vegetarian: boolean;
+    seasonal: boolean;
     categoryId: number
 }
 

@@ -32,7 +32,6 @@ const RestaurantById = ({params: {id}}: IRequestParamFormUrl) => {
             <LinearProgress variant="determinate" value={progress}/>
         </div>
     }
-    console.log("vasdfds", foodCategory)
     return (
         <div className={`p-5 overflow-y-scroll`}>
             {/** header */}

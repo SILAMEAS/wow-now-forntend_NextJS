@@ -1,6 +1,6 @@
-import { createNextRouteHandler } from "uploadthing/next";
-import { ourFileRouter } from "./core";
-import { UTApi } from "uploadthing/server";
+import {createNextRouteHandler} from "uploadthing/next";
+import {ourFileRouter} from "./core";
+import {UTApi} from "uploadthing/server";
 
 // Export routes for Next App Router
 export const { GET, POST } = createNextRouteHandler({
@@ -13,7 +13,7 @@ async function deleteImage(request: Request) {
   const utapi = new UTApi();
 
   const body = data as string | string[]
-  if (!body.length) return Response.json({ message: "url required" });
+  if (!body.length) return (Response as any).json({ message: "url required" });
 
   const paths: string[] = []
 
@@ -27,7 +27,7 @@ async function deleteImage(request: Request) {
     paths.push(path)
   }
   await utapi.deleteFiles(paths)
-  return Response.json({ message: "ok" });
+  return (Response as any).json({ message: "ok" });
 }
 
 export const DELETE = deleteImage

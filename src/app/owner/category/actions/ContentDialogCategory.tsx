@@ -14,7 +14,6 @@ const ContentDialogCategory = ({categorySelected, isCreated, actionUpdateReq}: {
     isCreated: boolean,
     actionUpdateReq?: () => void
 }) => {
-    console.log("data", categorySelected)
     const {
         register,
         handleSubmit,

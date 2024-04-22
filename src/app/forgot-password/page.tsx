@@ -16,9 +16,6 @@ const ForgotPassword = () => {
     const [loading,setLoading]=React.useState<boolean>(false);
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         setLoading(true);
-        // console.log("Data",data);
-        // const req = new UserRequest();
-        // await req.login(data).then(()=>setLoading(false));
     };
     return  <div className="bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
         <a href="#">
