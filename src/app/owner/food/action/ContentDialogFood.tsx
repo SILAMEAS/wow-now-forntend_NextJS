@@ -41,6 +41,7 @@ const ContentDialogFood = (props: IContentDialogFood) => {
                 restaurantId: restaurant.id
             }).unwrap() : foodSelected?.id && await updateFood({
                 ...data,
+                images:[data.images],
                 restaurantId: restaurant.id,
                 id: foodSelected?.id
             }).unwrap()
