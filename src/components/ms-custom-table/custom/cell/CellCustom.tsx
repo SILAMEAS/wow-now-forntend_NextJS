@@ -12,7 +12,7 @@ export function CellCustom<R extends Record<string, any>>(
                 return (
                     <TableRow
                         hover
-                        onClick={() => handleViewDetailPage(row)}
+                        onClick={() =>handleViewDetailPage&& handleViewDetailPage(row)}
                         tabIndex={-1}
                         key={row.id}
                         sx={{

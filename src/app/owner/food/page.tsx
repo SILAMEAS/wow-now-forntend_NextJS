@@ -6,9 +6,7 @@ import DialogCustom from "@/components/ms-dailog/DialogCustom";
 import TitleDialogFood from "@/app/owner/food/action/TitleDialogFood";
 import ContentDialogFood from "@/app/owner/food/action/ContentDialogFood";
 import {IResFood} from "@/redux/api/service/food/typeFood";
-import {useAppSelector} from "@/redux/api/hook/hoots";
-import ExampleUsageTableCustom from "@/components/ms-custom-table/example/ExampleUsageTableCustom";
-import {TestData} from "@/components/ms-custom-table/headCell/headCellsExample";
+import ExampleUsageTableCustom, {TestData} from "@/components/ms-custom-table/example/ExampleUsageTableCustom";
 import AddButton from "@/components/ms-button/AddButton";
 
 const FoodOwner = () => {
@@ -17,19 +15,12 @@ const FoodOwner = () => {
         pageSize: 9,
         sortOrder: Ascending
     });
-    const {restaurant} = useAppSelector(state => state.authReducer)
     const triggerOpen = useTriggerOpen();
     const [isCreated, setIsCreated] = React.useState<boolean>(true);
     const [foodSelected, setFoodSelected] = React.useState<IResFood | null>(null);
-    const handleViewDetailPage = (dataProps: TestData) => {
-        triggerOpen.open();
-        setIsCreated(false);
-        setFoodSelected(dataProps);
-
-    }
     return (
         <>
-            <ExampleUsageTableCustom<TestData> handleViewDetailPage={handleViewDetailPage}/>
+            <ExampleUsageTableCustom<TestData> setFoodSelected={setFoodSelected} setIsCreated={setIsCreated} triggerOpen={triggerOpen}/>
 
             <DialogCustom
                 maxWidth={'md'}

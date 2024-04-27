@@ -21,7 +21,7 @@ interface IFoodTableCustom<O> {
     setFoodSelected: React.Dispatch<React.SetStateAction<IResFood | null>>
 }
 
-const ExampleUsageTableCustom = <O extends TestData>({triggerOpen,setIsCreated,setFoodSelected}: IFoodTableCustom<O>) => {
+const CListUserTableCustom = <O extends TestData>({triggerOpen,setIsCreated,setFoodSelected}: IFoodTableCustom<O>) => {
     const {
         setVisibleRows,
         visibleRows,
@@ -199,5 +199,5 @@ const ExampleUsageTableCustom = <O extends TestData>({triggerOpen,setIsCreated,s
     );
 };
 
-export default ExampleUsageTableCustom;
+export default CListUserTableCustom;
 // if you want to render example please copy <ExampleUsageTableCustom> paste to page render faceToFace page

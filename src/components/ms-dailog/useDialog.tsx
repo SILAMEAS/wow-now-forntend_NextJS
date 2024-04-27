@@ -1,6 +1,7 @@
 import React from "react";
 
-export const useTriggerOpen = () => {
+export interface IUseTriggerOpen{isOpen:boolean,  open(): void,  close(): void, trigger(): void}
+export const useTriggerOpen = ():IUseTriggerOpen => {
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
     const open = () => {
         setIsOpen(true);

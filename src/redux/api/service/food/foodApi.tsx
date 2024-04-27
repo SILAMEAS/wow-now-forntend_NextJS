@@ -19,6 +19,15 @@ export const foodApi = createApi({
                 invalidatesTags: ['foods']
             }
         ),
+        deleteFood: builder.mutation<null, {id:number|string}>(
+            {
+                query: ({id}) => ({
+                    url: `admin/foods/${id}`,
+                    method: METHOD.Delete,
+                }),
+                invalidatesTags: ['foods']
+            }
+        ),
         updateFood: builder.mutation<IResListFoods, IReqCreateFood>(
             {
                 query: ({id, ...body}) => ({
@@ -56,6 +65,7 @@ export const {
     useGetFoodsQuery,
     useGetFoodsByRestaurantIdQuery,
     useCreateFoodMutation,
-    useUpdateFoodMutation
+    useUpdateFoodMutation,
+    useDeleteFoodMutation
 } = foodApi;
 

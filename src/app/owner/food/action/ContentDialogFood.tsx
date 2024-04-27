@@ -26,6 +26,7 @@ const ContentDialogFood = (props: IContentDialogFood) => {
         watch,
         formState: {errors, dirtyFields,isValidating},
         setValue,
+        reset
 
     } = useForm<IResFood>();
     const [createFood, resultCreateFood] = useCreateFoodMutation();
@@ -41,7 +42,7 @@ const ContentDialogFood = (props: IContentDialogFood) => {
                 restaurantId: restaurant.id
             }).unwrap() : foodSelected?.id && await updateFood({
                 ...data,
-                images:[data.images],
+                images:typeof data.images==='string'? [data.images]:data.images,
                 restaurantId: restaurant.id,
                 id: foodSelected?.id
             }).unwrap()
@@ -49,6 +50,9 @@ const ContentDialogFood = (props: IContentDialogFood) => {
         }
     };
     React.useEffect(() => {
+        if(isCreate){
+            reset();
+        }
         if (foodSelected) {
             const {
                 name,

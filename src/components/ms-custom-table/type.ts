@@ -22,7 +22,7 @@ export interface ITableCustom<P, T> {
         error: any;
         isLoading: boolean;
     };
-    handleViewDetailPage: (dataProps: T) => void;
+    handleViewDetailPage?: (dataProps: T) => void;
     filter: IFilterTableCustom;
     setFilter: React.Dispatch<React.SetStateAction<IFilterTableCustom>>;
     currentData?: P;
@@ -30,6 +30,6 @@ export interface ITableCustom<P, T> {
 
 export interface ICellCustom<R> {
     visibleRows: R[];
-    handleViewDetailPage: (dataProps: R) => void;
+    handleViewDetailPage?: (dataProps: R) => void;
     headCells: readonly HeadCellCustom<R>[];
 }

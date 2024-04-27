@@ -13,7 +13,7 @@ import AdminLayout from "@/app/admin/layout/AdminLayout";
 import "@uploadthing/react/styles.css";
 import {NextSSRPlugin} from "@uploadthing/react/next-ssr-plugin";
 import {extractRouterConfig} from "uploadthing/server";
-import {ourFileRouter} from "@/app/app/api/uploadthing/core";
+import {ourFileRouter} from "@/app/api/uploadthing/core";
 
 const inter = Inter({subsets: ["latin"]});
 

@@ -29,7 +29,7 @@ export interface IReqListFood {
     pageNo: number;
     sortOrder: Order;
     vegetarian?: boolean;
-    seasanal?: boolean;
+    seasonal?: boolean;
     filterBy?: string;
     search?: string;
 
