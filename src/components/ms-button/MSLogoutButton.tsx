@@ -1,11 +1,12 @@
 "use client";
 
+import {$logout} from "@/redux/api/hook/useLogout";
+
 export default function MSLogoutButton() {
-  // const req = new UserRequest();
   return (
     <button
       className="bg-red-500 text-white px-4 rounded-md"
-      // onClick={req.logout}
+      onClick={$logout}
     >
       logout
     </button>

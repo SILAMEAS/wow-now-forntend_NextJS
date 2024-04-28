@@ -28,6 +28,7 @@ export interface IReqCreateAccount {
 export interface IResProfile {
     id: number;
     fullName: string;
+    profile:string;
     email: string;
     password: string;
     role: EnumData;

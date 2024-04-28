@@ -29,8 +29,8 @@ const GroupRadio = ({value, setValue, data, label}: IGroupRadio) => {
                              onClick={() => setValue({...defaultFoodType, seasanal: true})}/>
                 <CustomRadio label={'Vegetarian'} check={value.vegetarian}
                              onClick={() => setValue({...defaultFoodType, vegetarian: true})}/>
-                <CustomRadio label={'Nonveg'} check={value.nonveg}
-                             onClick={() => setValue({...defaultFoodType, nonveg: true})}/>
+                {/*<CustomRadio label={'Nonveg'} check={value.nonveg}*/}
+                {/*             onClick={() => setValue({...defaultFoodType, nonveg: true})}/>*/}
 
             </FormControl>
         </Stack>

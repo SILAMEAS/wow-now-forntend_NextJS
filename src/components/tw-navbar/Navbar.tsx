@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
 import {BlockFoods} from "@/app/user/restaurant/components/BlockFoods";
+import {store} from "@/redux/store/store";
 
 const Navbar = () => {
     const router = useRouter();
@@ -37,7 +38,12 @@ const Navbar = () => {
                 </div>
 
                 <div onClick={$logout}>
-                    <Avatar sx={{bgcolor: "white", color: pink.A400, fontWeight: 600}}>MS</Avatar>
+                    <Avatar sx={{bgcolor: "white", color: pink.A400, fontWeight: 600}}>
+                        <img
+                        className="rounded-full w-10 h-10 relative object-cover"
+                        src={store.getState().authReducer.profile?.profile ?? ""}
+                        alt=""
+                    /></Avatar>
                 </div>
                 <div>
                     <IconButton>
