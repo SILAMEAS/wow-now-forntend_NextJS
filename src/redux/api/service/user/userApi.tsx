@@ -29,6 +29,14 @@ export const userApi = createApi({
                 }),
             }
         ),
+        checkServer: builder.query<any, any>(
+            {
+                query: (body) => ({
+                    url: `test-api`,
+                    method: METHOD.Get
+                }),
+            }
+        ),
         register: builder.mutation<any, IReqCreateAccount>(
             {
                 query: (body) => ({
@@ -46,5 +54,5 @@ export const userApi = createApi({
 export const {
     useLoginMutation,
     useRegisterMutation,
-
+    useCheckServerQuery
 } = userApi;

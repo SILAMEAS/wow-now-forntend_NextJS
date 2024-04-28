@@ -1,10 +1,11 @@
 "use client";
 import {SubmitHandler, useForm} from "react-hook-form";
 import React from "react";
-import {useLoginMutation} from "@/redux/api/service/user/userApi";
-import {Alert} from "@mui/material";
+import {useCheckServerQuery, useLoginMutation} from "@/redux/api/service/user/userApi";
+import {Alert, LinearProgress} from "@mui/material";
 import {reset} from "@/redux/slice/authSlice";
 import {store} from "@/redux/store/store";
+import {useLinearBuffer} from "@/utils/common/useLinear";
 
 type Inputs = {
     email: string;
@@ -18,6 +19,7 @@ const LoginPage = () => {
         formState: {errors},
     } = useForm<Inputs>()
     const [login, resultLogin] = useLoginMutation();
+    const checkServer = useCheckServerQuery({});
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         await login(data).unwrap();
     };
@@ -43,6 +45,13 @@ const LoginPage = () => {
     React.useEffect(() => {
         store.dispatch(reset());
     }, [])
+    const {progress} = useLinearBuffer(30000, checkServer.isLoading);
+    if (checkServer.isLoading) {
+        return <div className={'py-[50vh] px-5'}>
+            <p>Please wait! until server running ... </p>
+            <LinearProgress variant="determinate" value={progress}/>
+        </div>
+    }
     return <div className="bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
         <a href="#">
             <div className="text-foreground font-semibold text-2xl tracking-tighter mx-auto flex items-center gap-2">
