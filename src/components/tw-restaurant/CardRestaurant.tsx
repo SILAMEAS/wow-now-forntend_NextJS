@@ -16,15 +16,15 @@ interface ICardRestaurant {
 const CardRestaurant = ({data}: ICardRestaurant) => {
     const navigate = useRouter();
     const {profile} = useAppSelector(state => state.authReducer);
-    const isFavarite = store.getState().authReducer.profile?.favourites?.find(i => i.id === data.id) !== undefined;
+    const isFavarite = store.getState().authReducer.profile?.favourites?.find(i => i.restaurantId === data.id) !== undefined;
     const [favorite, setFavorite] = React.useState<boolean>(isFavarite);
     const [addFav] = useAddRestaurantFavMutation();
     const [loading, setLoading] = React.useState<boolean>(false);
-    React.useMemo(() => {
-        if (profile?.favourites?.find(i => i.id === data.id)) {
+    React.useEffect(() => {
+        if (profile?.favourites?.find(i => i.restaurantId === data.id)) {
             setFavorite(true);
         }
-    }, [data])
+    }, [data]);
     return (
         <div
             className={`h-[22rem] w-[20rem] rounded-xl bg-black/10 overflow-hidden relative ${data?.open ? 'cursor-pointer' : "cursor-not-allowed"} ${!data?.open && "opacity-50"} z-10`}>

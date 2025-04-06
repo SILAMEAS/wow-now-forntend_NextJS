@@ -25,11 +25,10 @@ export const restaurantApi = createApi({
                 providesTags: ['restaurant']
             }
         ),
-        addRestaurantFav: builder.mutation<IResListRestaurant, { id: number }>(
+        addRestaurantFav: builder.mutation<any, { id: number }>(
             {
                 query: ({id}) => ({
                     url: `restaurants/${id}/add-favorites`,
-                    body: {},
                     method: METHOD.Put,
                 }),
                 invalidatesTags: ['no']

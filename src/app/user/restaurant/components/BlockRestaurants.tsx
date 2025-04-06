@@ -7,7 +7,7 @@ import {defaultValuePagination, IReqListRestaurant} from "@/redux/api/service/re
 
 const ListCardOfRestaurants = () => {
     const [filter, setFilter] = React.useState<IReqListRestaurant>({...defaultValuePagination, pageSize: 12});
-    const listRestaurants = useGetRestaurantsQuery(filter);
+    const listRestaurants = useGetRestaurantsQuery(filter,{refetchOnFocus:true});
     // if (listRestaurants.isLoading || listRestaurants.isFetching) {
     //     return <CardLoading/>
     // }
@@ -21,16 +21,16 @@ const ListCardOfRestaurants = () => {
                 {/** list of restaurants */}
                 <div className={`flex flex-wrap gap-[20px] mx-auto justify-center `}>
                     {
-                        listRestaurants.isLoading || listRestaurants.isFetching ?
+                        listRestaurants.isLoading ?
                             <CardLoading/> :
-                            listRestaurants.data?.contents.map(item =>
+                            listRestaurants.currentData?.contents.map(item =>
                                 <CardRestaurant data={item} key={item.id}/>
                             )
                     }
                 </div>
                 {/** Footer of Restaurants */}
                 {
-                    !listRestaurants.isLoading && !listRestaurants.isFetching &&
+                    !listRestaurants.isLoading &&
                     <Pagination
                         count={listRestaurants.data?.totalPages}
                         color="primary"
